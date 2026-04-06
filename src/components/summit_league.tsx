@@ -1265,12 +1265,15 @@
       </div>
 
       <div class="search-box">
-        <div class="search-title">🔍 검색</div>
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
+          <div class="search-title" style="margin:0;">검색 조건</div>
+          <button class="btn btn-sm" style="background:#27ae60; color:#fff; border:none; font-size:11px; padding:6px 18px; border-radius:5px; font-weight:600;">엑셀 다운로드</button>
+        </div>
         <div class="search-grid">
           <div class="search-row"><span class="search-label">리그명</span><select class="form-select" style="flex:1;"><option>2026 윈터 리그오브매스</option><option>2025 서머 리그오브매스</option></select></div>
-          <div class="search-row"><span class="search-label">본부선택</span><select class="form-select" style="flex:1;"><option>선택</option></select></div>
-          <div class="search-row"><span class="search-label">지점선택</span><select class="form-select" style="flex:1;"><option>선택</option></select></div>
-          <div class="search-row"><span class="search-label">센터선택</span><select class="form-select" style="flex:1;"><option>선택</option></select></div>
+          <div class="search-row"><span class="search-label">본부</span><select class="form-select" style="flex:1;"><option>전체 학년</option></select></div>
+          <div class="search-row"><span class="search-label">지점</span><input class="form-input" style="flex:1;" placeholder="검색어 입력"></div>
+          <div class="search-row"><span class="search-label">센터</span><input class="form-input" style="flex:1;" placeholder="센터명 입력"></div>
           <div class="search-row"><span class="search-label">회원명</span><input class="form-input" style="flex:1;" placeholder="회원명 입력"></div>
           <div class="search-row"><span class="search-label">회원번호</span><input class="form-input" style="flex:1;" placeholder="회원번호 입력"></div>
         </div>
@@ -1279,7 +1282,6 @@
 
       <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
         <div class="count-badge" style="margin:0;">총 43,428건</div>
-        <button class="btn btn-gray btn-sm">엑셀 다운로드</button>
       </div>
 
       <div class="card" style="padding:0; overflow:hidden;">
@@ -1288,7 +1290,7 @@
             <tr>
               <th>No</th><th>교사</th><th>이름</th><th>학년</th><th>조 이름</th>
               <th>누적 점수</th><th>누적 포인트</th><th>현재 등수</th>
-              <th>자세히보기</th><th>리그 탈락 여부</th>
+              <th>자세히보기</th><th>리그 탈락 여부</th><th>관리</th>
             </tr>
           </thead>
           <tbody id="member-tbody"></tbody>
@@ -1379,20 +1381,31 @@
           tbody.innerHTML = '';
           var start = (curMemberPage - 1) * PAGE_SIZE;
           var end = Math.min(start + PAGE_SIZE, filteredMembers.length);
+          window.__memberDetails = window.__memberDetails || [];
           for (var i = start; i < end; i++) {
             var r = filteredMembers[i];
-            var no = start + i - start + 1;
             var rankCell = r.rank > 0 ? r.rank : '–';
-            var detailCell = '';
-            if (!r.dropout && r.detail) {
-              var d = r.detail;
-              detailCell = (function(gidx){ window.__memberDetails = window.__memberDetails||[]; window.__memberDetails[gidx]=r.detail; return '<button class="btn btn-secondary btn-sm" onclick="openMemberDetail(window.__memberDetails['+gidx+'])">자세히보기</button>'; })(start+i);
-            } else {
-              detailCell = '–';
-            }
+            // Store detail for popup access
+            window.__memberDetails[i] = r.detail;
+            // 자세히보기 column: blank (detail accessed via 관리 column)
+            var detailCell = '–';
+            // 리그 탈락 여부: green "진행중" badge for active, red "탈락" for eliminated
             var dropoutCell = r.dropout
               ? '<span class="badge badge-red">탈락</span>'
-              : '–';
+              : '<span class="badge badge-green" style="font-size:11px;">진행중</span>';
+            // 관리 column: blue button (differentiated from green badge above)
+            var manageCell;
+            if (r.dropout) {
+              manageCell = '–';
+            } else if (r.detail) {
+              if (r.team && r.team !== '– –') {
+                manageCell = '<button class="btn btn-primary btn-sm" style="min-width:68px;" onclick="openMemberDetail(window.__memberDetails[' + i + '])">진행중</button>';
+              } else {
+                manageCell = '<button class="btn btn-secondary btn-sm" onclick="openMemberDetail(window.__memberDetails[' + i + '])">상세보기</button>';
+              }
+            } else {
+              manageCell = '–';
+            }
             var tr = document.createElement('tr');
             tr.innerHTML =
               '<td>' + (i + 1) + '</td>' +
@@ -1404,7 +1417,8 @@
               '<td>' + r.point + '</td>' +
               '<td>' + rankCell + '</td>' +
               '<td>' + detailCell + '</td>' +
-              '<td>' + dropoutCell + '</td>';
+              '<td>' + dropoutCell + '</td>' +
+              '<td>' + manageCell + '</td>';
             tbody.appendChild(tr);
           }
           renderMemberPaging();
