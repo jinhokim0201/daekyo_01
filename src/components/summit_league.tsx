@@ -2565,18 +2565,19 @@
         }
         #result-table-wrap { overflow-x: auto; }
         #result-table {
-          width: 100%; border-collapse: collapse; font-size: 11.5px; white-space: nowrap;
+          width: 100%; border-collapse: collapse; font-size: 10.5px; white-space: nowrap;
         }
         #result-table thead tr { background: #4a90b8; color: #fff; position: sticky; top: 0; z-index: 2; }
         #result-table thead th {
-          padding: 8px 10px; text-align: center; font-weight: 600;
-          border: 1px solid #3a7aa8;
+          padding: 5px 4px; text-align: center; font-weight: 600;
+          border: 1px solid #c7d1de; line-height: 1.3;
         }
-        #result-table tbody tr { border-bottom: 1px solid #eef2f7; }
-        #result-table tbody tr:hover { background: #f0f8ff; }
+        #result-table tbody tr { border-bottom: 1px solid #c7d1de; }
+        #result-table tbody tr:nth-child(even) { background: #f7fafe; }
+        #result-table tbody tr:hover { background: #e8f4fb; }
         #result-table tbody td {
-          padding: 7px 10px; text-align: center; border: 1px solid #eef2f7;
-          vertical-align: middle;
+          padding: 6px 4px; text-align: center; border: 1px solid #c7d1de;
+          vertical-align: middle; color: #333340;
         }
         #result-table tbody td.td-left { text-align: left; }
         .final-rank-select {
@@ -2685,16 +2686,28 @@
         </div>
 
         <!-- 요약 + 액션 -->
-        <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:10px;">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
           <div class="summary-bar">
-            <div class="summary-item"><span>검색 결과</span><b id="result-total-count">0</b></div>
-            <div class="summary-item gm"><span>Grand Master</span><b id="cnt-gm">0</b></div>
-            <div class="summary-item master"><span>Master</span><b id="cnt-master">0</b></div>
-            <div class="summary-item" style="border-color:#e74c3c;"><span style="color:#e74c3c;">최하고정</span><b id="cnt-bottom" style="color:#e74c3c;">0</b></div>
+            <div class="summary-item" style="border-color:#2e7094; color:#2e7094; display:flex; flex-direction:column; justify-content:space-between; min-width:160px; height:38px; padding:4px 12px;">
+              <span style="font-size:11px; font-weight:400;">검색 결과</span>
+              <b id="result-total-count" style="font-size:16px; font-weight:700; align-self:flex-end; margin-top:-2px;">0</b>
+            </div>
+            <div class="summary-item gm" style="border-color:#ffbf00; display:flex; flex-direction:column; justify-content:space-between; min-width:160px; height:38px; padding:4px 12px;">
+              <span style="font-size:11px; color:#996600;">Grand Master</span>
+              <b id="cnt-gm" style="font-size:16px; color:#cc8000; align-self:flex-end; margin-top:-2px;">0</b>
+            </div>
+            <div class="summary-item master" style="border-color:#2e7094; display:flex; flex-direction:column; justify-content:space-between; min-width:160px; height:38px; padding:4px 12px;">
+              <span style="font-size:11px;">Master</span>
+              <b id="cnt-master" style="font-size:16px; align-self:flex-end; margin-top:-2px;">0</b>
+            </div>
+            <div class="summary-item" style="border-color:#e84d3d; color:#e84d3d; display:flex; flex-direction:column; justify-content:space-between; min-width:160px; height:38px; padding:4px 12px;">
+              <span style="font-size:11px;">최하고정</span>
+              <b id="cnt-bottom" style="font-size:16px; align-self:flex-end; margin-top:-2px;">0</b>
+            </div>
           </div>
-          <div style="display:flex; gap:8px; align-items:center; margin-top:4px;">
-            <button class="btn btn-green btn-sm" onclick="saveAllFinalRank()">최종랭킹 일괄저장</button>
-            <button class="btn btn-gray btn-sm" onclick="downloadExcel()">📥 엑셀 다운로드</button>
+          <div style="display:flex; gap:8px; align-items:center;">
+            <button class="btn btn-green btn-sm" style="height:34px; font-size:12px; padding:0 14px;" onclick="saveAllFinalRank()">최종랭킹 일괄저장</button>
+            <button class="btn btn-gray btn-sm" style="height:34px; font-size:12px; padding:0 14px; border:1px solid #ccd1d9; color:#333340;" onclick="downloadExcel()">📥 엑셀 다운로드</button>
           </div>
         </div>
 
@@ -2721,15 +2734,14 @@
                 <tr>
                   <th>본부</th><th>지점</th><th>센터</th><th>센터타입</th>
                   <th>교사명</th><th>회원번호</th><th>회원명</th><th>학년</th><th>조이름</th>
-                  <th>학습점수</th><th>시간점수</th><th>출결점수</th>
-                  <th>학습가산점</th><th>리셋감점</th><th>총점</th>
-                  <th>상위가점</th><th>하위감점</th><th>가감총점</th>
-                  <th>학습평균</th><th>전국학습평균</th><th>학습상위</th>
-                  <th>시간평균</th><th>전국시간평균</th><th>시간상위</th>
-                  <th>출결평균</th><th>전국출결평균</th><th>출결상위</th>
-                  <th>총점평균</th><th>전국총점평균</th><th>총점상위</th>
-                  <th>학습포인트</th><th>출결포인트</th><th>전체포인트</th><th>복권이벤트</th>
-                  <th>랭킹</th><th>본부랭킹</th><th>전국랭킹</th><th>전국회원수</th>
+                  <th style="font-size:10px;">1주<br>학습</th><th style="font-size:10px;">1주<br>시간</th><th style="font-size:10px;">1주<br>출결</th>
+                  <th style="font-size:10px;">2주<br>학습</th><th style="font-size:10px;">2주<br>시간</th><th style="font-size:10px;">2주<br>출결</th>
+                  <th style="font-size:10px;">3주<br>학습</th><th style="font-size:10px;">3주<br>시간</th><th style="font-size:10px;">3주<br>출결</th>
+                  <th style="font-size:10px;">학습<br>평균</th><th style="font-size:10px;">시간<br>평균</th><th style="font-size:10px;">출결<br>평균</th><th style="font-size:10px;">평균<br>합계</th>
+                  <th style="font-size:10px;">상위<br>%</th><th style="font-size:10px;">조내<br>1위</th><th style="font-size:10px;">조내<br>2위</th><th style="font-size:10px;">조내<br>3위</th>
+                  <th style="font-size:10px;">학년<br>1위</th><th style="font-size:10px;">학년<br>2위</th><th style="font-size:10px;">전국<br>상위%</th><th style="font-size:10px;">학년<br>랭킹</th>
+                  <th style="font-size:10px;">출석<br>포인트</th><th style="font-size:10px;">학습<br>포인트</th><th style="font-size:10px;">순위<br>포인트</th><th style="font-size:10px;">총<br>포인트</th>
+                  <th style="font-size:10px;">전국<br>랭킹</th><th style="font-size:10px;">학년<br>랭킹</th><th style="font-size:10px;">조내<br>랭킹</th><th style="font-size:10px;">조<br>랭킹</th>
                 </tr>
               </thead>
               <tbody id="result-tbody"></tbody>
@@ -3078,6 +3090,19 @@
           document.getElementById('cnt-bottom').textContent = bCnt;
 
           window.__resultPageRows = filteredData;
+          // Build per-week lookup for score columns
+          var weekLookup = {};
+          var lgData = LEAGUE_DATA[currentLeagueKey];
+          if (lgData && lgData.weeks) {
+            [1,2,3].forEach(function(w) {
+              var wArr = lgData.weeks[String(w)] || [];
+              wArr.forEach(function(wr) {
+                var key = wr['회원번호'];
+                if (!weekLookup[key]) weekLookup[key] = {};
+                weekLookup[key][w] = wr;
+              });
+            });
+          }
           for(var i=start;i<end;i++){
             var r=filteredData[i];
             var rv=rankState[r['회원번호']]||'';
@@ -3087,6 +3112,15 @@
             else if(rv==='최하고정') cls='bottom';
             var _gradeDisp = (r['리그명'] && r['리그명'] !== '-') ? r['리그명'].replace(/^[A-Z]\./, '') : (r['학년'] || '-');
             var _ridx = i;
+            // Per-week scores
+            var wk = weekLookup[r['회원번호']] || {};
+            var w1 = wk[1] || r, w2 = wk[2] || {}, w3 = wk[3] || {};
+            var _학습평균 = r['학습평균'] || '-';
+            var _시간평균 = r['시간평균'] || '-';
+            var _출결평균 = r['출결평균'] || '-';
+            var _avg합계 = (r['총점평균'] || r['가감총점'] || '-');
+            var _상위pct = r['학습상위'] || r['총점상위'] || '-';
+            var _전국상위 = r['총점상위'] || '-';
             var tr=document.createElement('tr');
             tr.innerHTML=
               '<td>'+(i+1)+'</td>'+
@@ -3099,22 +3133,31 @@
               '<td><b style="cursor:pointer;color:#1976d2;text-decoration:underline;" onclick="openResultMemberDetail('+_ridx+');">'+r['회원명']+'</b></td>'+
               '<td>'+_gradeDisp+'</td>'+
               '<td>'+(r['조명']||'-')+'</td>'+
-              '<td>'+r['학습점수']+'</td>'+
-              '<td>'+r['시간점수']+'</td>'+
-              '<td>'+r['출결점수']+'</td>'+
-              '<td>'+r['학습가산점']+'</td>'+
-              '<td>'+r['리셋감점']+'</td>'+
-              '<td><b>'+r['총점']+'</b></td>'+
-              '<td>'+r['상위가점']+'</td>'+
-              '<td>'+r['하위감점']+'</td>'+
-              '<td><b>'+r['가감총점']+'</b></td>'+
-              '<td>'+r['학습평균']+'</td><td>'+r['전국학습평균']+'</td><td>'+r['학습상위']+'</td>'+
-              '<td>'+r['시간평균']+'</td><td>'+r['전국시간평균']+'</td><td>'+r['시간상위']+'</td>'+
-              '<td>'+r['출결평균']+'</td><td>'+r['전국출결평균']+'</td><td>'+r['출결상위']+'</td>'+
-              '<td>'+r['총점평균']+'</td><td>'+r['전국총점평균']+'</td><td>'+r['총점상위']+'</td>'+
-              '<td>'+r['학습포인트']+'</td><td>'+r['출결포인트']+'</td><td><b>'+r['전체포인트']+'</b></td><td>'+r['복권이벤트']+'</td>'+
-              '<td>'+r['랭킹']+'</td><td>'+r['본부랭킹']+'</td>'+
-              '<td><b>'+r['전국랭킹']+'</b></td><td>'+r['전국회원수']+'</td>'+
+              '<td>'+(w1['학습점수']||'-')+'</td>'+
+              '<td>'+(w1['시간점수']||'-')+'</td>'+
+              '<td>'+(w1['출결점수']||'-')+'</td>'+
+              '<td>'+(w2['학습점수']||'-')+'</td>'+
+              '<td>'+(w2['시간점수']||'-')+'</td>'+
+              '<td>'+(w2['출결점수']||'-')+'</td>'+
+              '<td>'+(w3['학습점수']||'-')+'</td>'+
+              '<td>'+(w3['시간점수']||'-')+'</td>'+
+              '<td>'+(w3['출결점수']||'-')+'</td>'+
+              '<td>'+_학습평균+'</td>'+
+              '<td>'+_시간평균+'</td>'+
+              '<td>'+_출결평균+'</td>'+
+              '<td>'+_avg합계+'</td>'+
+              '<td>'+_상위pct+'</td>'+
+              '<td>-</td><td>-</td><td>-</td>'+
+              '<td>-</td><td>-</td>'+
+              '<td>'+_전국상위+'</td>'+
+              '<td>'+(r['랭킹']||'-')+'</td>'+
+              '<td>'+(r['출결포인트']||'-')+'</td>'+
+              '<td>'+(r['학습포인트']||'-')+'</td>'+
+              '<td>-</td>'+
+              '<td><b>'+(r['전체포인트']||'-')+'</b></td>'+
+              '<td><b>'+(r['전국랭킹']||'-')+'</b></td>'+
+              '<td>'+(r['본부랭킹']||'-')+'</td>'+
+              '<td>-</td><td>-</td>'+
               '<td><select class="final-rank-select '+cls+'" data-memno="'+r['회원번호']+'" onchange="onRankChange(this)">'+
                 '<option value="">—</option>'+
                 '<option value="Grand Master"'+(rv==='Grand Master'?' selected':'')+'>Grand Master</option>'+
@@ -3177,18 +3220,38 @@
         }
 
         function downloadExcel(){
-          var headers = ['본부','지점','센터','센터타입','교사명','회원번호','회원명','생년월일',
-            '리그명','조명','학습점수','시간점수','출결점수','학습가산점','리셋감점','총점',
-            '상위가점','하위감점','상하위진도수','총학습수','가감총점','평균','랭킹','본부랭킹',
-            '학습평균','전국학습평균','학습상위','시간평균','전국시간평균','시간상위',
-            '출결평균','전국출결평균','출결상위','총점평균','전국총점평균','총점상위',
-            '학습포인트','출결포인트','전체포인트','복권이벤트','전국랭킹','전국회원수','최종랭킹'];
+          var lgData = LEAGUE_DATA[currentLeagueKey];
+          var weekLookupDl = {};
+          if (lgData && lgData.weeks) {
+            [1,2,3].forEach(function(w) {
+              (lgData.weeks[String(w)] || []).forEach(function(wr) {
+                if (!weekLookupDl[wr['회원번호']]) weekLookupDl[wr['회원번호']] = {};
+                weekLookupDl[wr['회원번호']][w] = wr;
+              });
+            });
+          }
+          var headers = ['본부','지점','센터','센터타입','교사명','회원번호','회원명','학년','조이름',
+            '1주학습','1주시간','1주출결','2주학습','2주시간','2주출결','3주학습','3주시간','3주출결',
+            '학습평균','시간평균','출결평균','평균합계','상위%','전국상위%','학년랭킹',
+            '출석포인트','학습포인트','순위포인트','총포인트',
+            '전국랭킹','학년랭킹','조내랭킹','조랭킹','최종랭킹'];
           var rows = [headers.join('	')];
           filteredData.forEach(function(r){
-            var row = headers.map(function(h){
-              if(h==='최종랭킹') return rankState[r['회원번호']]||'';
-              return r[h]||'';
-            });
+            var wk = weekLookupDl[r['회원번호']] || {};
+            var w1=wk[1]||r, w2=wk[2]||{}, w3=wk[3]||{};
+            var _grade = (r['리그명'] && r['리그명'] !== '-') ? r['리그명'].replace(/^[A-Z]\./, '') : (r['학년'] || '');
+            var row = [
+              r['본부']||'', r['지점']||'', r['센터']||'', r['센터타입']||'', r['교사명']||'',
+              r['회원번호']||'', r['회원명']||'', _grade, r['조명']||'',
+              w1['학습점수']||'', w1['시간점수']||'', w1['출결점수']||'',
+              w2['학습점수']||'', w2['시간점수']||'', w2['출결점수']||'',
+              w3['학습점수']||'', w3['시간점수']||'', w3['출결점수']||'',
+              r['학습평균']||'', r['시간평균']||'', r['출결평균']||'',
+              r['총점평균']||r['가감총점']||'', r['학습상위']||'', r['총점상위']||'', r['랭킹']||'',
+              r['출결포인트']||'', r['학습포인트']||'', '', r['전체포인트']||'',
+              r['전국랭킹']||'', r['본부랭킹']||'', '', '',
+              rankState[r['회원번호']]||''
+            ];
             rows.push(row.join('	'));
           });
           var blob = new Blob(['﻿'+rows.join('\n')], {type:'text/plain;charset=utf-8'});
