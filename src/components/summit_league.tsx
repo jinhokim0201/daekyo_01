@@ -3307,43 +3307,41 @@
         <!-- 탭: 본부별 완주율 -->
         <div id="result-tab-result-bonbu" style="display:none;">
           <style>
-            #bonbu-table { width:100%; border-collapse:collapse; font-size:13px; }
-            #bonbu-table thead tr { background:#4a90b8; color:#fff; }
-            #bonbu-table thead th { padding:10px 16px; text-align:center; font-weight:600; border:1px solid #3a7aa8; }
-            #bonbu-table tbody tr { border-bottom:1px solid #eef2f7; }
-            #bonbu-table tbody tr:hover { background:#f0f8ff; }
-            #bonbu-table tbody td { padding:9px 16px; text-align:center; border:1px solid #eef2f7; }
-            #bonbu-table tbody td.td-left { text-align:left; font-weight:600; color:#2c5f7a; }
-            #bonbu-table tfoot tr { background:#e8f4fb; font-weight:700; }
-            #bonbu-table tfoot td { padding:10px 16px; border:1px solid #dde3ea; text-align:center; color:#2c5f7a; }
-            .rate-bar-wrap { display:flex; align-items:center; gap:8px; }
-            .rate-bar { height:10px; border-radius:5px; background:#4a90b8; }
-            .rate-bar.high { background:#27ae60; }
-            .rate-bar.mid  { background:#e67e22; }
-            .rate-bar.low  { background:#e74c3c; }
+            #bonbu-table { width:100%; border-collapse:collapse; font-size:11px; white-space:nowrap; }
+            #bonbu-table thead tr { background:#4a90b9; color:#fff; }
+            #bonbu-table thead th { padding:10px 16px; text-align:center; font-weight:600; border:1px solid #3b7aa8; }
+            #bonbu-table tbody tr:nth-child(even) { background:#f7fafe; }
+            #bonbu-table tbody tr:hover { background:#e8f4fb; }
+            #bonbu-table tbody td { padding:9px 16px; text-align:center; border:1px solid #e5ecf2; }
+            #bonbu-table tbody td.td-left { text-align:left; font-weight:500; color:#2c5f7a; }
+            #bonbu-table tfoot tr { background:#e8f4fb; }
+            #bonbu-table tfoot td { padding:10px 16px; border:1px solid #ccd9e5; font-weight:700; color:#2c5f7a; text-align:center; }
+            .rate-bar-wrap { display:flex; align-items:center; gap:8px; padding:0 11px; }
+            .rate-bar-track { flex:1; height:12px; border-radius:6px; background:#e5ecf2; position:relative; max-width:627px; }
+            .rate-bar-fill { height:12px; border-radius:6px; background:#4a90b9; }
           </style>
 
           <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
-            <div class="count-badge" style="margin:0;">총 9개 본부</div>
-            <button class="btn btn-gray btn-sm" onclick="downloadBonbuExcel()">📥 엑셀 다운로드</button>
+            <div style="background:#faa523; color:#fff; font-size:12px; font-weight:700; padding:4px 14px; border-radius:14px; display:inline-block;">총 9개 본부</div>
+            <button class="btn btn-gray btn-sm" style="border:1px solid #ccd1d9; color:#333340;" onclick="downloadBonbuExcel()">📥 엑셀 다운로드</button>
           </div>
 
           <div class="card" style="padding:0; overflow:hidden;">
             <table id="bonbu-table">
               <thead>
                 <tr>
-                  <th style="width:40px;">No</th>
-                  <th>본부</th>
-                  <th>총회원수</th>
-                  <th>완주회원수</th>
-                  <th>완주율</th>
-                  <th style="min-width:200px;">완주율 현황</th>
+                  <th style="width:44px;">No</th>
+                  <th style="min-width:280px;">본부</th>
+                  <th style="width:140px;">총회원수</th>
+                  <th style="width:140px;">완주회원수</th>
+                  <th style="width:120px;">완주율</th>
+                  <th>완주율 현황</th>
                 </tr>
               </thead>
               <tbody id="bonbu-tbody"></tbody>
               <tfoot>
                 <tr>
-                  <td colspan="2">전체 합계</td>
+                  <td colspan="2" style="text-align:left; padding-left:9px;">전체 합계</td>
                   <td id="bonbu-total-members">-</td>
                   <td id="bonbu-total-complete">-</td>
                   <td id="bonbu-total-rate">-</td>
@@ -3375,16 +3373,15 @@
                 var rate = (d.complete / d.total * 100).toFixed(2);
                 totalM += d.total; totalC += d.complete;
                 var rateNum = parseFloat(rate);
-                var barCls = rateNum>=93 ? 'high' : rateNum>=90 ? '' : 'mid';
-                var barW = Math.round(rateNum * 1.8); // max ~180px
+                var fillPct = Math.min(100, rateNum);
                 var tr = document.createElement('tr');
                 tr.innerHTML =
                   '<td>'+(i+1)+'</td>'+
                   '<td class="td-left">'+d.bonbu+'</td>'+
                   '<td>'+d.total.toLocaleString()+'</td>'+
                   '<td>'+d.complete.toLocaleString()+'</td>'+
-                  '<td><b style="font-size:14px; color:'+(rateNum>=93?'#27ae60':rateNum>=90?'#4a90b8':'#e67e22')+'">'+rate+'%</b></td>'+
-                  '<td><div class="rate-bar-wrap"><div class="rate-bar '+barCls+'" style="width:'+barW+'px;"></div><span style="font-size:11.5px;color:#888;">'+rate+'%</span></div></td>';
+                  '<td>'+rate+'%</td>'+
+                  '<td><div class="rate-bar-wrap"><div class="rate-bar-track"><div class="rate-bar-fill" style="width:'+fillPct+'%;"></div></div><span style="font-size:11px;font-weight:600;color:#333340;min-width:46px;">'+rate+'%</span></div></td>';
                 tbody.appendChild(tr);
               });
               var totalRate = (totalC/totalM*100).toFixed(2);
@@ -3413,13 +3410,13 @@
         <!-- 탭: 탈락자 관리 -->
         <div id="result-tab-result-dropout" style="display:none;">
           <style>
-            #dropout-table { width:100%; border-collapse:collapse; font-size:12px; white-space:nowrap; }
-            #dropout-table thead tr { background:#4a90b8; color:#fff; }
-            #dropout-table thead th { padding:9px 12px; text-align:center; font-weight:600; border:1px solid #3a7aa8; }
-            #dropout-table tbody tr { border-bottom:1px solid #eef2f7; transition:background .12s; }
-            #dropout-table tbody tr:hover { background:#f7fbfe; }
-            #dropout-table tbody tr.rescued { background:#f0fff4 !important; opacity:.6; }
-            #dropout-table tbody td { padding:8px 12px; text-align:center; border:1px solid #eef2f7; vertical-align:middle; }
+            #dropout-table { width:100%; border-collapse:collapse; font-size:10.5px; white-space:nowrap; }
+            #dropout-table thead tr { background:#4a90b9; color:#fff; }
+            #dropout-table thead th { padding:9px 6px; text-align:center; font-weight:600; border:1px solid #3b7aa8; }
+            #dropout-table tbody tr:nth-child(even) { background:#f7fafe; }
+            #dropout-table tbody tr:hover { background:#e8f4fb; }
+            #dropout-table tbody tr.rescued { background:#f0fff4 !important; opacity:.7; }
+            #dropout-table tbody td { padding:8px 5px; text-align:center; border:1px solid #e5ecf2; vertical-align:middle; color:#333340; }
             #dropout-table tbody td.td-left { text-align:left; }
             .dropout-paging { display:flex; gap:4px; align-items:center; justify-content:center; margin-top:14px; }
             .dropout-paging button {
@@ -3429,40 +3426,39 @@
             .dropout-paging button.active { background:#4a90b8; color:#fff; border-color:#4a90b8; font-weight:700; }
             .dropout-paging button:hover:not(.active) { background:#e8f4fb; }
             .btn-rescue {
-              background:#4a90b8; color:#fff; border:none; border-radius:4px;
-              padding:5px 14px; font-size:12px; font-weight:600; cursor:pointer;
-              transition:background .15s;
+              background:#4a90b9; color:#fff; border:none; border-radius:4px;
+              padding:4px 0; width:70px; font-size:10px; font-weight:600; cursor:pointer;
+              transition:background .15s; display:block; margin:0 auto;
             }
             .btn-rescue:hover { background:#357fa0; }
             .btn-rescue:disabled { background:#b0c4d4; cursor:default; }
           </style>
 
-          <!-- 검색 -->
-          <div class="search-box" style="margin-bottom:14px;">
-            <div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap;">
-              <div style="flex:1; min-width:200px; position:relative;">
-                <span style="position:absolute; left:12px; top:50%; transform:translateY(-50%); color:#aaa; font-size:13px;">🔍</span>
-                <input class="form-input" id="do-keyword" style="width:100%; padding-left:34px; box-sizing:border-box;"
-                  placeholder="본부, 지점, 센터, 교사명, 회원명 등으로 검색"
-                  oninput="doDropoutSearch()"
-                  onkeydown="if(event.key==='Enter') doDropoutSearch()">
-              </div>
-              <button class="btn btn-primary" style="padding:8px 28px; white-space:nowrap;" onclick="doDropoutSearch()">검색</button>
-              <!-- 보기 모드 토글 -->
-              <div style="display:flex; gap:0; border:1px solid #2c5f7a; border-radius:6px; overflow:hidden; margin-left:8px;">
-                <button id="btn-view-dropout"
-                  style="padding:7px 18px; font-size:12.5px; font-weight:600; background:#2c5f7a; color:#fff; border:none; cursor:pointer; white-space:nowrap;"
-                  onclick="setDropoutView('dropout')">🚫 탈락자 목록</button>
-                <button id="btn-view-rescued"
-                  style="padding:7px 18px; font-size:12.5px; font-weight:600; background:#fff; color:#2c5f7a; border:none; cursor:pointer; white-space:nowrap;"
-                  onclick="setDropoutView('rescued')">✅ 구제 완료 목록</button>
-              </div>
+          <!-- 검색 (Figma: 단일 행 컴팩트 바) -->
+          <div style="background:#f7f9fb; border:1px solid #dde5ee; border-radius:8px; height:44px; display:flex; align-items:center; gap:0; padding:0; margin-bottom:12px; overflow:hidden;">
+            <div style="flex:1; position:relative; margin:0 0 0 11px;">
+              <input class="form-input" id="do-keyword"
+                style="width:100%; border:1px solid #ccd1d9; border-radius:4px; height:28px; padding:0 10px 0 30px; font-size:11px; box-sizing:border-box; background:#fff; color:#a6a6b2;"
+                placeholder="본부, 지점, 센터, 교사명, 회원명 등으로 검색"
+                oninput="doDropoutSearch()"
+                onkeydown="if(event.key==='Enter') doDropoutSearch()">
+              <span style="position:absolute; left:9px; top:50%; transform:translateY(-50%); font-size:12px; color:#a6a6b2; pointer-events:none;">🔍</span>
+            </div>
+            <button style="background:#4a90b9; color:#fff; border:none; border-radius:4px; height:28px; padding:0 24px; font-size:12px; font-weight:600; cursor:pointer; margin:0 8px 0 8px; white-space:nowrap;" onclick="doDropoutSearch()">검색</button>
+            <!-- 보기 모드 토글 -->
+            <div style="display:flex; border:1px solid #2c5f7a; border-radius:6px; overflow:hidden; margin-right:11px; height:30px;">
+              <button id="btn-view-dropout"
+                style="padding:0 14px; font-size:11px; font-weight:600; background:#2c5f7a; color:#fff; border:none; cursor:pointer; white-space:nowrap;"
+                onclick="setDropoutView('dropout')">🚫 탈락자 목록</button>
+              <button id="btn-view-rescued"
+                style="padding:0 14px; font-size:11px; font-weight:600; background:#fff; color:#2c5f7a; border:none; cursor:pointer; white-space:nowrap;"
+                onclick="setDropoutView('rescued')">✅ 구제 완료 목록</button>
             </div>
           </div>
 
           <!-- 건수 -->
           <div style="margin-bottom:10px;">
-            <span style="background:#f5a623; color:#fff; font-size:12.5px; font-weight:700; padding:4px 12px; border-radius:12px;">
+            <span id="dropout-count-badge" style="background:#faa523; color:#fff; font-size:12px; font-weight:700; padding:4px 14px; border-radius:13px; display:inline-block;">
               총 <span id="dropout-count">0</span>건
             </span>
           </div>
@@ -3607,9 +3603,8 @@
               var countEl = document.getElementById('dropout-count');
               if(countEl) {
                 countEl.textContent = filteredData.length.toLocaleString();
-                // 배지 색상 변경
-                var badge = countEl.parentElement;
-                if(badge) badge.style.background = (viewMode === 'rescued') ? '#27ae60' : '#f5a623';
+                var badge = document.getElementById('dropout-count-badge');
+                if(badge) badge.style.background = (viewMode === 'rescued') ? '#27ae60' : '#faa523';
               }
 
               var start=(curPage-1)*PAGE_SIZE, end=Math.min(start+PAGE_SIZE, filteredData.length);
