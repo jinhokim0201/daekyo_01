@@ -1783,101 +1783,207 @@
       </div>
 
       <style>
-        #stats-search-box {
-          background:#f7fbfe; border:1px solid #dde3ea; border-radius:6px;
-          padding:14px 20px; margin-bottom:16px;
-        }
-        #stats-search-box .s-row { display:flex; align-items:center; gap:10px; margin-bottom:10px; }
-        #stats-search-box .s-label { font-size:12.5px; font-weight:600; color:#555; min-width:40px; }
-        #stats-table { width:100%; border-collapse:collapse; font-size:12.5px; }
-        #stats-table thead tr { background:#4a90b8; color:#fff; }
-        #stats-table thead th { padding:10px 14px; text-align:center; font-weight:600; border:1px solid #3a7aa8; }
-        #stats-table tbody tr { border-bottom:1px solid #eef2f7; }
-        #stats-table tbody tr:hover { background:#f7fbfe; }
-        #stats-table tbody td { padding:9px 14px; text-align:center; border:1px solid #eef2f7; vertical-align:middle; }
-        #stats-table tbody td.td-left { text-align:left; }
-        #stats-table tfoot tr { background:#e8f4fb; font-weight:700; }
-        #stats-table tfoot td { padding:10px 14px; border:1px solid #dde3ea; text-align:center; color:#2c5f7a; }
+        /* ── 신청 통계 ── */
+        .stats-sum-cards { display:grid; grid-template-columns:repeat(4,1fr); gap:14px; margin-bottom:14px; }
+        .stats-sum-card { background:#fff; border:1px solid #dde3ea; border-radius:10px; padding:18px 18px 14px; }
+        .stats-sum-card .sc-label { font-size:12px; color:#888; margin-bottom:8px; }
+        .stats-sum-card .sc-value { font-size:28px; font-weight:700; line-height:1.15; }
+        .stats-charts-row { display:grid; grid-template-columns:62fr 38fr; gap:14px; margin-bottom:14px; }
+        .stats-chart-panel { background:#fff; border:1px solid #dde3ea; border-radius:10px; padding:18px 18px 12px; position:relative; }
+        .stats-chart-title { font-size:14px; font-weight:700; color:#2c4f6c; margin-bottom:14px; }
+        .stats-bar-area { display:flex; align-items:flex-end; height:280px; width:100%; padding-bottom:26px; border-bottom:1px solid #dde3ea; position:relative; }
+        .stats-bar-item { display:flex; flex-direction:column; align-items:center; flex:1; }
+        .stats-bar-value { font-size:10px; font-weight:600; color:#2c4f6c; margin-bottom:3px; }
+        .stats-bar-col { border-radius:4px 4px 0 0; width:56px; }
+        .stats-bar-label { font-size:10px; color:#888; margin-top:5px; }
+        .stats-empty-overlay { position:absolute; inset:0; background:rgba(255,255,255,0.88); display:flex; flex-direction:column; align-items:center; justify-content:center; border-radius:8px; }
+        .stats-empty-icon { font-size:40px; margin-bottom:10px; }
+        .stats-empty-title { font-size:16px; font-weight:700; color:#2c4f6c; margin-bottom:5px; }
+        .stats-empty-sub { font-size:13px; color:#888; }
+        .stats-info-banner { background:#e3f2fd; border:1px solid #90caf9; border-radius:10px; padding:14px 20px; margin-bottom:14px; font-size:13px; color:#1665c0; }
+        .stats-dday-pill { display:flex; align-items:center; justify-content:center; background:#e3f2fd; border-radius:26px; padding:14px 28px; font-size:14px; font-weight:700; color:#1665c0; margin:20px auto 0; width:fit-content; }
+        #stats-search-bar { background:#f7f9fb; border:1px solid #dde5ee; border-radius:8px; padding:10px 14px 10px; margin-bottom:12px; display:flex; align-items:center; gap:12px; }
+        #stats-search-bar .sf-group { display:flex; flex-direction:column; gap:3px; flex:1; }
+        #stats-search-bar .sf-label { font-size:10.5px; font-weight:500; color:#556; }
+        .stats-count-pill { display:inline-flex; align-items:center; background:#faa523; color:#fff; font-weight:700; font-size:11px; padding:4px 14px; border-radius:13px; }
+        #stats-table { width:100%; border-collapse:collapse; font-size:11px; white-space:nowrap; }
+        #stats-table thead tr { background:#4a90b9; color:#fff; }
+        #stats-table thead th { padding:9px 10px; text-align:center; font-weight:600; border:1px solid #3b7aa8; font-size:11px; }
+        #stats-table tbody tr:nth-child(even) { background:#f7fafe; }
+        #stats-table tbody td { padding:8px 10px; text-align:center; border:1px solid #e5ecf2; vertical-align:middle; }
+        #stats-table tbody td.td-left { text-align:left; font-size:10px; }
+        #stats-table tfoot tr { background:#e8f4fb; }
+        #stats-table tfoot td { padding:9px 10px; border:1px solid #ccd9e5; font-weight:700; color:#2c5f7a; font-size:11px; }
+        .stats-rate-wrap { display:flex; align-items:center; gap:7px; }
+        .stats-rate-track { flex:1; height:12px; border-radius:4px; background:#e5ecf2; min-width:60px; }
+        .stats-rate-fill { height:12px; border-radius:4px; }
         .stats-paging { display:flex; gap:4px; align-items:center; justify-content:center; margin-top:14px; }
-        .stats-paging button {
-          min-width:30px; height:30px; border:1px solid #dde3ea; border-radius:4px;
-          background:#fff; cursor:pointer; font-size:12px; color:#555; transition:all .15s;
-        }
+        .stats-paging button { min-width:30px; height:30px; border:1px solid #dde3ea; border-radius:4px; background:#fff; cursor:pointer; font-size:12px; color:#555; }
         .stats-paging button.active { background:#4a90b8; color:#fff; border-color:#4a90b8; font-weight:700; }
         .stats-paging button:hover:not(.active) { background:#e8f4fb; }
         .zero-red { color:#e74c3c; font-weight:700; }
       </style>
 
-      <!-- 검색 -->
-      <div id="stats-search-box">
-        <div style="font-weight:700; color:#4a90b8; margin-bottom:12px; font-size:13px;">🔍 검색</div>
-        <div class="s-row">
-          <span class="s-label">본부</span>
-          <select class="form-select" id="st-bonbu" style="width:180px;">
-            <option value="">전체</option>
-            <option>대교 경기본부</option><option>대교 경산본부</option><option>대교 경인본부</option>
-            <option>대교 부경본부</option><option>대교 서울강원본부</option><option>대교 서울남동본부</option>
-            <option>대교 서울서북본부</option><option>대교 충청본부</option><option>대교 호남본부</option>
-          </select>
-          <span class="s-label" style="margin-left:16px;">지점</span>
-          <select class="form-select" id="st-jijum" style="width:220px;">
-            <option value="">전체</option>
-            <option>대교 군포산본 Hive</option><option>대교 안양만안 Hive</option>
-            <option>대교 대구월성 Hive</option><option>대교 부산강서 Hive</option>
-            <option>대교 양산 Hive</option><option>대교 용인 Hive</option><option>대교 하남 Hive</option>
-          </select>
-          <span class="s-label" style="margin-left:16px;">팀/센터</span>
-          <select class="form-select" id="st-center" style="width:220px;">
-            <option value="">전체</option>
-            <option>대교 군포산본 Hive 001팀</option><option>대교 안양만안 Hive 001팀</option>
-            <option>[LC]명지국제</option><option>대교 양산 Hive 001팀</option>
-          </select>
+      <!-- ── 데이터 없음 상태 ── -->
+      <div id="stats-empty-state" style="display:none;">
+        <div class="stats-info-banner">ℹ&nbsp; 신청 기간(2025.12.01 ~ 2025.12.31) 시작 후 통계가 집계됩니다. 현재는 통계 데이터가 없습니다.</div>
+        <div class="stats-sum-cards">
+          <div class="stats-sum-card" style="background:#f2f3f4;text-align:center;"><div class="sc-label">총 신청 인원</div><div class="sc-value" style="color:#c7ccd1;">0명</div><div style="font-size:11px;color:#b2b8bd;margin-top:6px;">신청 기간 전</div></div>
+          <div class="stats-sum-card" style="background:#f2f3f4;text-align:center;"><div class="sc-label">윈터리그 신청</div><div class="sc-value" style="color:#c7ccd1;">0명</div><div style="font-size:11px;color:#b2b8bd;margin-top:6px;">신청 기간 전</div></div>
+          <div class="stats-sum-card" style="background:#f2f3f4;text-align:center;"><div class="sc-label">완료 인원</div><div class="sc-value" style="color:#c7ccd1;">0명</div><div style="font-size:11px;color:#b2b8bd;margin-top:6px;">신청 기간 전</div></div>
+          <div class="stats-sum-card" style="background:#f2f3f4;text-align:center;"><div class="sc-label">탈락 인원</div><div class="sc-value" style="color:#c7ccd1;">0명</div><div style="font-size:11px;color:#b2b8bd;margin-top:6px;">신청 기간 전</div></div>
         </div>
-        <div style="text-align:center;">
-          <button class="btn btn-primary" style="padding:8px 40px;" onclick="doStatsSearch()">검색</button>
-          <button class="btn btn-gray" style="padding:8px 20px; margin-left:6px;" onclick="resetStatsSearch()">초기화</button>
+        <div class="stats-charts-row">
+          <div class="stats-chart-panel" style="min-height:340px;"><div class="stats-chart-title">학년별 신청 인원</div><div class="stats-empty-overlay"><div class="stats-empty-icon">📊</div><div class="stats-empty-title">데이터 없음</div><div class="stats-empty-sub">신청 기간이 시작되면 학년별 통계가 자동으로 표시됩니다.</div></div></div>
+          <div class="stats-chart-panel" style="min-height:340px;"><div class="stats-chart-title">월별 신청 추이</div><div class="stats-empty-overlay"><div class="stats-empty-icon">📈</div><div class="stats-empty-title">데이터 없음</div><div class="stats-empty-sub">신청 시작 후 추이가 표시됩니다.</div></div></div>
         </div>
+        <div class="stats-dday-pill">📅&nbsp; 신청 기간 시작까지&nbsp; D-60</div>
       </div>
 
-      <!-- 건수 + 엑셀 -->
-      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
-        <div class="count-badge" style="margin:0;">총 <span id="stats-count">2,621</span>건</div>
-        <button class="btn btn-gray btn-sm" onclick="downloadStatsExcel()">엑셀 다운로드</button>
-      </div>
+      <!-- ── 데이터 있음 상태 ── -->
+      <div id="stats-data-state">
+        <!-- 요약 카드 -->
+        <div class="stats-sum-cards">
+          <div class="stats-sum-card"><div class="sc-label">총 신청 인원</div><div class="sc-value" style="color:#2c4f6c;">43,428명</div></div>
+          <div class="stats-sum-card"><div class="sc-label">윈터리그 신청</div><div class="sc-value" style="color:#4a90b8;">43,428명</div></div>
+          <div class="stats-sum-card"><div class="sc-label">완료 인원</div><div class="sc-value" style="color:#27ae60;">41,205명</div></div>
+          <div class="stats-sum-card"><div class="sc-label">탈락 인원</div><div class="sc-value" style="color:#e74c3c;">2,223명</div></div>
+        </div>
 
-      <!-- 테이블 -->
-      <div class="card" style="padding:0; overflow:hidden;">
-        <table id="stats-table">
-          <thead>
-            <tr>
-              <th>지점</th>
-              <th>팀/센터명</th>
-              <th>교사명</th>
-              <th>총 학생 수</th>
-              <th>신청완료</th>
-              <th>신청대기</th>
-              <th>미신청</th>
-              <th>신청율</th>
-            </tr>
-          </thead>
-          <tbody id="stats-tbody"></tbody>
-          <tfoot>
-            <tr>
-              <td colspan="3">합계</td>
-              <td id="st-tot-total">-</td>
-              <td id="st-tot-done">-</td>
-              <td id="st-tot-wait">-</td>
-              <td id="st-tot-none">-</td>
-              <td id="st-tot-rate">-</td>
-            </tr>
-          </tfoot>
-        </table>
-        <div class="stats-paging" id="stats-paging"></div>
-        <div style="height:12px;"></div>
+        <!-- 차트 패널 -->
+        <div class="stats-charts-row">
+          <div class="stats-chart-panel">
+            <div class="stats-chart-title">학년별 신청 인원</div>
+            <div class="stats-bar-area" id="stats-bar-chart"></div>
+          </div>
+          <div class="stats-chart-panel">
+            <div class="stats-chart-title">월별 신청 추이</div>
+            <svg id="stats-line-svg" width="100%" style="overflow:visible;display:block;"></svg>
+          </div>
+        </div>
+
+        <!-- 검색 -->
+        <div id="stats-search-bar">
+          <div style="font-size:11px;font-weight:600;color:#2c5f7a;white-space:nowrap;">🔍 검색</div>
+          <div class="sf-group">
+            <label class="sf-label">본부</label>
+            <input class="form-input" id="st-bonbu" placeholder="전체 본부" style="height:30px;font-size:11px;border:1px solid #ccd1d9;border-radius:4px;padding:0 9px;background:#fff;">
+          </div>
+          <div class="sf-group">
+            <label class="sf-label">지점</label>
+            <input class="form-input" id="st-jijum" placeholder="전체 지점" style="height:30px;font-size:11px;border:1px solid #ccd1d9;border-radius:4px;padding:0 9px;background:#fff;">
+          </div>
+          <div class="sf-group">
+            <label class="sf-label">팀/센터</label>
+            <input class="form-input" id="st-center" placeholder="팀/센터명 입력" style="height:30px;font-size:11px;border:1px solid #ccd1d9;border-radius:4px;padding:0 9px;background:#fff;">
+          </div>
+          <button style="background:#4a90b9;color:#fff;border:none;height:30px;padding:0 18px;border-radius:4px;font-size:11px;font-weight:600;cursor:pointer;margin-top:14px;" onclick="doStatsSearch()">검색</button>
+          <button style="background:#eaedf2;color:#4d4d59;border:1px solid #ccd1d9;height:30px;padding:0 14px;border-radius:4px;font-size:11px;cursor:pointer;margin-top:14px;" onclick="resetStatsSearch()">초기화</button>
+        </div>
+
+        <!-- 건수 + 엑셀 -->
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
+          <div class="stats-count-pill">총 <span id="stats-count">2,621</span>건</div>
+          <button style="background:#eaedf2;color:#333340;border:1px solid #ccd1d9;height:28px;padding:0 14px;border-radius:4px;font-size:11px;cursor:pointer;" onclick="downloadStatsExcel()">📥 엑셀 다운로드</button>
+        </div>
+
+        <!-- 테이블 -->
+        <div class="card" style="padding:0; overflow:hidden;">
+          <table id="stats-table">
+            <thead>
+              <tr>
+                <th>지점</th><th>팀/센터명</th><th>교사명</th>
+                <th>총 학생 수</th><th>신청완료</th><th>신청대기</th><th>미신청</th><th>신청율</th>
+              </tr>
+            </thead>
+            <tbody id="stats-tbody"></tbody>
+            <tfoot>
+              <tr>
+                <td colspan="3">전체 합계</td>
+                <td id="st-tot-total">-</td><td id="st-tot-done">-</td>
+                <td id="st-tot-wait">-</td><td id="st-tot-none">-</td><td id="st-tot-rate">-</td>
+              </tr>
+            </tfoot>
+          </table>
+          <div class="stats-paging" id="stats-paging"></div>
+          <div style="height:12px;"></div>
+        </div>
       </div>
 
       <script>
       (function(){
+        // ── 데이터 없음 / 있음 상태 전환 ──
+        var HAS_DATA = true;
+        document.getElementById('stats-empty-state').style.display = HAS_DATA ? 'none' : 'block';
+        document.getElementById('stats-data-state').style.display  = HAS_DATA ? 'block' : 'none';
+
+        // ── 학년별 막대 차트 ──
+        var GRADE_DATA = [
+          {grade:'초1', count:2581}, {grade:'초2', count:5358},
+          {grade:'초3', count:7034}, {grade:'초4', count:7396},
+          {grade:'초5', count:6549}, {grade:'초6', count:5434},
+          {grade:'중1', count:4020}, {grade:'중2', count:2888},
+          {grade:'중3', count:1860}
+        ];
+        var barColors = ['#4a90b8','#4f90b3','#5490ae','#5990a9','#5e90a4','#63909f','#69909a','#6e9094','#73908f'];
+        function renderBarChart() {
+          var container = document.getElementById('stats-bar-chart');
+          if (!container) return;
+          var maxV = Math.max.apply(null, GRADE_DATA.map(function(d){ return d.count; }));
+          var maxH = 230;
+          container.innerHTML = '';
+          GRADE_DATA.forEach(function(d, i) {
+            var h = Math.round(d.count / maxV * maxH);
+            var item = document.createElement('div');
+            item.className = 'stats-bar-item';
+            item.innerHTML =
+              '<div class="stats-bar-value">' + d.count.toLocaleString() + '</div>' +
+              '<div class="stats-bar-col" style="height:' + h + 'px;background:' + barColors[i] + ';"></div>' +
+              '<div class="stats-bar-label">' + d.grade + '</div>';
+            container.appendChild(item);
+          });
+        }
+        if (HAS_DATA) renderBarChart();
+
+        // ── 월별 선 차트 ──
+        var MONTHLY_DATA = [
+          {m:'1',  v:500},  {m:'2',  v:1200}, {m:'3',  v:2800},
+          {m:'4',  v:5500}, {m:'5',  v:9800}, {m:'6',  v:15200},
+          {m:'7',  v:22000},{m:'8',  v:29500},{m:'9',  v:35200},
+          {m:'10', v:39500},{m:'11', v:42000},{m:'12', v:43428}
+        ];
+        function renderLineChart() {
+          var svg = document.getElementById('stats-line-svg');
+          if (!svg) return;
+          var W = 540, H = 300, pL=36, pR=16, pT=20, pB=32;
+          var cw = W-pL-pR, ch = H-pT-pB;
+          var maxV = Math.max.apply(null, MONTHLY_DATA.map(function(d){ return d.v; }));
+          var pts = MONTHLY_DATA.map(function(d, i) {
+            return {
+              x: (pL + (i/(MONTHLY_DATA.length-1))*cw).toFixed(1),
+              y: (pT + ch - (d.v/maxV)*ch).toFixed(1),
+              m: d.m
+            };
+          });
+          var hlines = '';
+          for (var g=0; g<=4; g++) {
+            var gy = (pT + (ch/4)*g).toFixed(1);
+            hlines += '<line x1="'+pL+'" y1="'+gy+'" x2="'+(pL+cw)+'" y2="'+gy+'" stroke="#e5ecf2" stroke-width="1"/>';
+          }
+          svg.setAttribute('viewBox','0 0 '+W+' '+H);
+          svg.setAttribute('height', H);
+          svg.innerHTML = hlines +
+            '<polyline points="'+pts.map(function(p){return p.x+','+p.y;}).join(' ')+
+            '" fill="none" stroke="#4a90b9" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>' +
+            pts.map(function(p){
+              return '<circle cx="'+p.x+'" cy="'+p.y+'" r="4" fill="#4a90b9" stroke="#fff" stroke-width="1.5"/>';
+            }).join('') +
+            pts.map(function(p){
+              return '<text x="'+p.x+'" y="'+(H-6)+'" font-size="10" fill="#888" text-anchor="middle">'+p.m+'월</text>';
+            }).join('');
+        }
+        if (HAS_DATA) renderLineChart();
+
         var STATS_DATA = [
           {bonbu:'대교 경기본부',    jijum:'대교 군포산본 Hive',    center:'대교 군포산본 Hive 001팀',    teacher:'송자영', total:18, done:18, wait:0, none:0},
           {bonbu:'대교 경기본부',    jijum:'대교 군포산본 Hive',    center:'대교 군포산본 Hive 002팀',    teacher:'한미정', total:22, done:20, wait:1, none:1},
@@ -2040,9 +2146,9 @@
         window._renderStats = renderStats;
 
         function resetStatsSearch(){
-          document.getElementById('st-bonbu').value='';
-          document.getElementById('st-jijum').value='';
-          document.getElementById('st-center').value='';
+          ['st-bonbu','st-jijum','st-center'].forEach(function(id){
+            var el=document.getElementById(id); if(el) el.value='';
+          });
           filteredStats=STATS_DATA.slice(); curPage=1; renderStats();
         }
         window.resetStatsSearch = resetStatsSearch;
@@ -2068,7 +2174,8 @@
             var r=filteredStats[i];
             var rate=r.total>0?(r.done/r.total*100).toFixed(1)+'%':'0%';
             var rateNum=r.total>0?r.done/r.total*100:0;
-            var rateColor=rateNum===100?'#2c5f7a':rateNum>=75?'#555':'#e74c3c';
+            var fillColor=rateNum>=90?'#27ae60':rateNum>=70?'#4a90b9':'#e67e22';
+            var fillW=Math.min(100,rateNum).toFixed(1);
             var noneHtml=r.none===0
               ?'<span class="zero-red">0</span>'
               :'<span class="zero-red">'+r.none+'</span>';
@@ -2086,7 +2193,7 @@
               '<td><span ' + clickable + ' onclick="openStatsMembersModal(' + rowIdx + ',\'done\')">'+r.done+'</span></td>'+
               '<td><span ' + (r.wait>0 ? clickable : '') + ' onclick="openStatsMembersModal(' + rowIdx + ',\'wait\')">'+r.wait+'</span></td>'+
               '<td>'+noneClickable+'</td>'+
-              '<td><b style="color:'+rateColor+'">'+rate+'</b></td>';
+              '<td><div class="stats-rate-wrap"><div class="stats-rate-track"><div class="stats-rate-fill" style="width:'+fillW+'%;background:'+fillColor+';"></div></div><span style="font-size:10px;font-weight:600;color:'+fillColor+';min-width:36px;">'+rate+'</span></div></td>';
             tbody.appendChild(tr);
           }
           renderStatsPaging();
@@ -2320,33 +2427,37 @@
           if (!r.alarmHistory || r.alarmHistory.length === 0) {
             rows = '<tr><td colspan="4" style="padding:24px;text-align:center;color:#bbb;">발송 이력이 없습니다.</td></tr>';
           } else {
-            r.alarmHistory.forEach(function(h) {
+            r.alarmHistory.forEach(function(h, idx) {
+              var bg = idx%2===0 ? '#fff' : '#f7fafe';
               rows +=
-                '<tr style="border-bottom:1px solid #f0f0f0;">' +
-                '<td style="padding:10px 16px;text-align:center;">' + h.sender + '</td>' +
-                '<td style="padding:10px 16px;text-align:center;font-weight:700;color:#e74c3c;">' + h.count + '</td>' +
-                '<td style="padding:10px 16px;text-align:center;">' + h.time + '</td>' +
-                '<td style="padding:10px 16px;text-align:center;color:#555;">' + h.phone + '</td>' +
+                '<tr style="background:'+bg+';border-bottom:1px solid #e5ecf2;">' +
+                '<td style="padding:9px 12px;text-align:center;border:1px solid #e5ecf2;">' + h.sender + '</td>' +
+                '<td style="padding:9px 12px;text-align:center;border:1px solid #e5ecf2;font-weight:700;color:#4a90b9;">' + h.count + '</td>' +
+                '<td style="padding:9px 12px;text-align:center;border:1px solid #e5ecf2;color:#555;">' + h.time + '</td>' +
+                '<td style="padding:9px 12px;text-align:center;border:1px solid #e5ecf2;color:#888;font-size:11px;">' + h.phone + '</td>' +
                 '</tr>';
             });
           }
           var modal = document.getElementById('modal-alarm-history');
           modal.innerHTML =
             '<div style="position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:9200;display:flex;align-items:center;justify-content:center;padding:20px;" onclick="if(event.target===this)closeAlarmHistoryModal()">' +
-              '<div style="background:#fff;border-radius:10px;width:560px;max-width:96vw;max-height:80vh;display:flex;flex-direction:column;box-shadow:0 8px 40px rgba(0,0,0,.25);">' +
-                '<div style="padding:22px 28px 16px;border-bottom:1px solid #eee;display:flex;justify-content:space-between;align-items:center;">' +
-                  '<div style="font-size:18px;font-weight:700;color:#222;">알림톡 발송 이력</div>' +
-                  '<button onclick="closeAlarmHistoryModal()" style="background:none;border:none;font-size:22px;cursor:pointer;color:#aaa;line-height:1;padding:0;">✕</button>' +
+              '<div style="background:#fff;border-radius:10px;width:560px;max-width:96vw;max-height:80vh;display:flex;flex-direction:column;box-shadow:0 8px 40px rgba(0,0,0,.25);overflow:hidden;">' +
+                '<div style="padding:18px 24px 14px;border-bottom:1px solid #eef2f7;display:flex;justify-content:space-between;align-items:center;">' +
+                  '<div style="font-size:16px;font-weight:700;color:#2c4f6c;">알림톡 발송 이력</div>' +
+                  '<button onclick="closeAlarmHistoryModal()" style="background:none;border:none;font-size:20px;cursor:pointer;color:#aaa;line-height:1;padding:0;">✕</button>' +
                 '</div>' +
-                '<div style="padding:10px 24px 6px;font-size:13px;color:#888;">' + r.name + ' · ' + r.grade + ' · 총 ' + r.alarm + '회 발송</div>' +
+                '<div style="padding:8px 24px 6px;font-size:12px;color:#888;background:#f7fbfe;border-bottom:1px solid #eef2f7;">' +
+                  '<span style="font-weight:600;color:#2c4f6c;">' + r.name + '</span> · ' + r.grade +
+                  ' · 총 <span style="font-weight:700;color:#4a90b9;">' + r.alarm + '회</span> 발송' +
+                '</div>' +
                 '<div style="overflow-y:auto;flex:1;">' +
-                  '<table style="width:100%;border-collapse:collapse;">' +
+                  '<table style="width:100%;border-collapse:collapse;font-size:12px;">' +
                     '<thead>' +
-                      '<tr style="background:#3a7fa0;">' +
-                        '<th style="padding:10px 16px;color:#fff;font-weight:600;text-align:center;">발송자</th>' +
-                        '<th style="padding:10px 16px;color:#fff;font-weight:600;text-align:center;">회수</th>' +
-                        '<th style="padding:10px 16px;color:#fff;font-weight:600;text-align:center;">최근 발송 시간</th>' +
-                        '<th style="padding:10px 16px;color:#fff;font-weight:600;text-align:center;">발송 번호</th>' +
+                      '<tr style="background:#4a90b9;">' +
+                        '<th style="padding:9px 14px;color:#fff;font-weight:600;text-align:center;border:1px solid #3b7aa8;">발송자</th>' +
+                        '<th style="padding:9px 14px;color:#fff;font-weight:600;text-align:center;border:1px solid #3b7aa8;">회수</th>' +
+                        '<th style="padding:9px 14px;color:#fff;font-weight:600;text-align:center;border:1px solid #3b7aa8;">최근 발송 시간</th>' +
+                        '<th style="padding:9px 14px;color:#fff;font-weight:600;text-align:center;border:1px solid #3b7aa8;">발송 번호</th>' +
                       '</tr>' +
                     '</thead>' +
                     '<tbody>' + rows + '</tbody>' +
