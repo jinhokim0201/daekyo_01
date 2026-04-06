@@ -389,7 +389,7 @@
               <td>2025.07.14 ~ 2025.09.06</td>
               <td>38,204명</td>
               <td><span class="badge badge-gray">종료</span></td>
-              <td><button class="btn btn-secondary btn-sm" onclick="showLeagueDetail('2025_summer')">상세관리</button> <button class="btn btn-gray btn-sm" style="margin-left:4px;">조 편성</button></td>
+              <td><button class="btn btn-secondary btn-sm" onclick="showLeagueDetail('2025_summer')">상세관리</button> <button class="btn btn-gray btn-sm" style="margin-left:4px;">조 편성</button> <button class="btn btn-primary btn-sm" style="margin-left:4px;" onclick="showPage('result-manage')">결과보기</button></td>
             </tr>
             <tr>
               <td>5</td>
@@ -398,7 +398,7 @@
               <td>2025.01.13 ~ 2025.03.01</td>
               <td>35,190명</td>
               <td><span class="badge badge-gray">종료</span></td>
-              <td><button class="btn btn-secondary btn-sm" onclick="showLeagueDetail('2025_winter')">상세관리</button> <button class="btn btn-gray btn-sm" style="margin-left:4px;">조 편성</button></td>
+              <td><button class="btn btn-secondary btn-sm" onclick="showLeagueDetail('2025_winter')">상세관리</button> <button class="btn btn-gray btn-sm" style="margin-left:4px;">조 편성</button> <button class="btn btn-primary btn-sm" style="margin-left:4px;" onclick="showPage('result-manage')">결과보기</button></td>
             </tr>
             <tr>
               <td>4</td>
@@ -407,7 +407,7 @@
               <td>2024.07.15 ~ 2024.09.07</td>
               <td>33,817명</td>
               <td><span class="badge badge-gray">종료</span></td>
-              <td><button class="btn btn-secondary btn-sm" onclick="showLeagueDetail('2024_summer')">상세관리</button> <button class="btn btn-gray btn-sm" style="margin-left:4px;">조 편성</button></td>
+              <td><button class="btn btn-secondary btn-sm" onclick="showLeagueDetail('2024_summer')">상세관리</button> <button class="btn btn-gray btn-sm" style="margin-left:4px;">조 편성</button> <button class="btn btn-primary btn-sm" style="margin-left:4px;" onclick="showPage('result-manage')">결과보기</button></td>
             </tr>
             <tr>
               <td>3</td>
@@ -416,7 +416,7 @@
               <td>2024.01.08 ~ 2024.02.24</td>
               <td>31,042명</td>
               <td><span class="badge badge-gray">종료</span></td>
-              <td><button class="btn btn-secondary btn-sm" onclick="showLeagueDetail('2024_winter')">상세관리</button> <button class="btn btn-gray btn-sm" style="margin-left:4px;">조 편성</button></td>
+              <td><button class="btn btn-secondary btn-sm" onclick="showLeagueDetail('2024_winter')">상세관리</button> <button class="btn btn-gray btn-sm" style="margin-left:4px;">조 편성</button> <button class="btn btn-primary btn-sm" style="margin-left:4px;" onclick="showPage('result-manage')">결과보기</button></td>
             </tr>
             <tr>
               <td>2</td>
@@ -425,7 +425,7 @@
               <td>2023.07.17 ~ 2023.09.02</td>
               <td>28,350명</td>
               <td><span class="badge badge-gray">종료</span></td>
-              <td><button class="btn btn-secondary btn-sm" onclick="showLeagueDetail('2023_summer')">상세관리</button> <button class="btn btn-gray btn-sm" style="margin-left:4px;">조 편성</button></td>
+              <td><button class="btn btn-secondary btn-sm" onclick="showLeagueDetail('2023_summer')">상세관리</button> <button class="btn btn-gray btn-sm" style="margin-left:4px;">조 편성</button> <button class="btn btn-primary btn-sm" style="margin-left:4px;" onclick="showPage('result-manage')">결과보기</button></td>
             </tr>
             <tr>
               <td>1</td>
@@ -434,7 +434,7 @@
               <td>2023.01.09 ~ 2023.02.25</td>
               <td>24,918명</td>
               <td><span class="badge badge-gray">종료</span></td>
-              <td><button class="btn btn-secondary btn-sm" onclick="showLeagueDetail('2023_winter')">상세관리</button> <button class="btn btn-gray btn-sm" style="margin-left:4px;">조 편성</button></td>
+              <td><button class="btn btn-secondary btn-sm" onclick="showLeagueDetail('2023_winter')">상세관리</button> <button class="btn btn-gray btn-sm" style="margin-left:4px;">조 편성</button> <button class="btn btn-primary btn-sm" style="margin-left:4px;" onclick="showPage('result-manage')">결과보기</button></td>
             </tr>
           </tbody>
         </table>
@@ -1544,12 +1544,13 @@
                       <th style="padding:7px 12px; border:1px solid #dde3ea; text-align:center; color:#2c5f7a;">지급 포인트</th>
                       <th style="padding:7px 12px; border:1px solid #dde3ea; text-align:center; color:#2c5f7a;">사유</th>
                       <th style="padding:7px 12px; border:1px solid #dde3ea; text-align:center; color:#2c5f7a;">메모</th>
+                      <th style="padding:7px 12px; border:1px solid #dde3ea; text-align:center; color:#2c5f7a;">관리자ID</th>
                       <th style="padding:7px 12px; border:1px solid #dde3ea; text-align:center; color:#2c5f7a;">지급 후 누적</th>
                     </tr>
                   </thead>
                   <tbody id="md-point-log-tbody">
                     <tr>
-                      <td colspan="5" style="padding:14px; text-align:center; color:#aaa; border:1px solid #eef2f7; font-size:12px;">추가 지급 내역이 없습니다.</td>
+                      <td colspan="6" style="padding:14px; text-align:center; color:#aaa; border:1px solid #eef2f7; font-size:12px;">추가 지급 내역이 없습니다.</td>
                     </tr>
                   </tbody>
                 </table>
@@ -1603,7 +1604,8 @@
 
       // 리그 정보 테이블
       var infoRows = [
-        ['이름', data.name, '현재 등수', data.rank],
+        ['이름', data.name, '회원번호', data.memberNo || data['회원번호'] || '—'],
+        ['학년', data.grade || '—', '현재 등수', data.rank],
         ['조이름', data.team, '누적 점수', data.score],
         ['포춘메시지', data.message, '누적 포인트', data.point],
         ['이벤트선물', data.event, '', ''],
@@ -1720,7 +1722,7 @@
         +String(now.getDate()).padStart(2,'0')+' '
         +String(now.getHours()).padStart(2,'0')+':'
         +String(now.getMinutes()).padStart(2,'0');
-      _mdPointLogs.unshift({ ts:ts, pts:pts, reason:reason, memo:memo||'-', after:_mdCurrentPoint });
+      _mdPointLogs.unshift({ ts:ts, pts:pts, reason:reason, memo:memo||'-', after:_mdCurrentPoint, adminId:'admin_' + (Math.floor(Math.random()*9000)+1001) });
       document.getElementById('md-current-point').textContent = _mdCurrentPoint.toLocaleString(undefined,{minimumFractionDigits:0,maximumFractionDigits:2});
       document.getElementById('md-add-point').value = '';
       document.getElementById('md-point-reason').value = '';
@@ -1731,7 +1733,7 @@
     function renderPointLog() {
       var tbody = document.getElementById('md-point-log-tbody');
       if(!_mdPointLogs.length) {
-        tbody.innerHTML = '<tr><td colspan="5" style="padding:14px; text-align:center; color:#aaa; border:1px solid #eef2f7; font-size:12px;">추가 지급 내역이 없습니다.</td></tr>';
+        tbody.innerHTML = '<tr><td colspan="6" style="padding:14px; text-align:center; color:#aaa; border:1px solid #eef2f7; font-size:12px;">추가 지급 내역이 없습니다.</td></tr>';
         return;
       }
       tbody.innerHTML = '';
@@ -1745,6 +1747,7 @@
           '<td style="padding:7px 12px; text-align:center; border:1px solid #eef2f7; font-weight:700; color:'+ptsColor+';">'+ptsText+' P</td>'+
           '<td style="padding:7px 12px; text-align:center; border:1px solid #eef2f7;">'+log.reason+'</td>'+
           '<td style="padding:7px 12px; text-align:center; border:1px solid #eef2f7; color:#666;">'+log.memo+'</td>'+
+          '<td style="padding:7px 12px; text-align:center; border:1px solid #eef2f7; color:#888; font-size:11px;">'+(log.adminId||'—')+'</td>'+
           '<td style="padding:7px 12px; text-align:center; border:1px solid #eef2f7; font-weight:700; color:#2c5f7a;">'+log.after.toLocaleString()+'</td>';
         tbody.appendChild(tr);
       });
@@ -2664,6 +2667,17 @@
             <div class="search-row"><span class="search-label">회원명</span><input class="form-input" id="s-memname" style="flex:1;" placeholder="회원명"></div>
             <div class="search-row"><span class="search-label">전국랭킹</span><input class="form-input" id="s-natrank" style="flex:1;" placeholder="예) 1"></div>
           </div>
+          <div class="search-grid-5b" style="margin-top:8px;">
+            <div class="search-row"><span class="search-label">학년</span>
+              <select class="form-select" id="s-grade" style="flex:1;">
+                <option value="">전체</option>
+                <option>초1</option><option>초2</option><option>초3</option><option>초4</option><option>초5</option><option>초6</option>
+                <option>중1</option><option>중2</option><option>중3</option>
+                <option>고1</option><option>고2</option>
+              </select>
+            </div>
+            <div class="search-row"><span class="search-label">조 이름</span><input class="form-input" id="s-teamname" style="flex:1;" placeholder="예) 01조"></div>
+          </div>
           <div style="text-align:center;">
             <button class="btn btn-primary" style="padding:8px 36px;" onclick="doSearch()">검색</button>
             <button class="btn btn-gray" style="padding:8px 20px; margin-left:6px;" onclick="resetSearch()">초기화</button>
@@ -2692,7 +2706,7 @@
                 <tr>
                   <th rowspan="2" style="min-width:36px;">No</th>
                   <!-- 기본정보 -->
-                  <th colspan="7" class="col-group-header">기본 정보</th>
+                  <th colspan="9" class="col-group-header">기본 정보</th>
                   <!-- 점수 -->
                   <th colspan="9" class="col-group-score">점수 정보</th>
                   <!-- 평균/상위 -->
@@ -2706,7 +2720,7 @@
                 </tr>
                 <tr>
                   <th>본부</th><th>지점</th><th>센터</th><th>센터타입</th>
-                  <th>교사명</th><th>회원번호</th><th>회원명</th>
+                  <th>교사명</th><th>회원번호</th><th>회원명</th><th>학년</th><th>조이름</th>
                   <th>학습점수</th><th>시간점수</th><th>출결점수</th>
                   <th>학습가산점</th><th>리셋감점</th><th>총점</th>
                   <th>상위가점</th><th>하위감점</th><th>가감총점</th>
@@ -3003,14 +3017,16 @@
   }
 
         function doSearch(){
-          var bonbu   = document.getElementById('s-bonbu').value.trim();
-          var jijum   = document.getElementById('s-jijum').value.trim();
-          var center  = document.getElementById('s-center').value.trim();
-          var ctype   = document.getElementById('s-ctype').value;
-          var teacher = document.getElementById('s-teacher').value.trim();
-          var memno   = document.getElementById('s-memno').value.trim();
-          var memname = document.getElementById('s-memname').value.trim();
-          var natrank = document.getElementById('s-natrank').value.trim();
+          var bonbu    = document.getElementById('s-bonbu').value.trim();
+          var jijum    = document.getElementById('s-jijum').value.trim();
+          var center   = document.getElementById('s-center').value.trim();
+          var ctype    = document.getElementById('s-ctype').value;
+          var teacher  = document.getElementById('s-teacher').value.trim();
+          var memno    = document.getElementById('s-memno').value.trim();
+          var memname  = document.getElementById('s-memname').value.trim();
+          var natrank  = document.getElementById('s-natrank').value.trim();
+          var grade    = document.getElementById('s-grade') ? document.getElementById('s-grade').value : '';
+          var teamname = document.getElementById('s-teamname') ? document.getElementById('s-teamname').value.trim() : '';
           filteredData = currentLeagueData.filter(function(r){
             if(bonbu   && r['본부'].indexOf(bonbu)<0)   return false;
             if(jijum   && r['지점'].indexOf(jijum)<0)   return false;
@@ -3020,6 +3036,11 @@
             if(memno   && r['회원번호'].indexOf(memno)<0) return false;
             if(memname && r['회원명'].indexOf(memname)<0) return false;
             if(natrank && String(r['전국랭킹']) !== natrank) return false;
+            if(grade) {
+              var _rGrade = (r['리그명'] && r['리그명'] !== '-') ? r['리그명'].replace(/^[A-Z]\./, '') : (r['학년'] || '');
+              if(_rGrade.indexOf(grade) < 0) return false;
+            }
+            if(teamname && (r['조명'] || '').indexOf(teamname) < 0) return false;
             return true;
           });
           currentPage = 1;
@@ -3027,10 +3048,13 @@
         }
 
         function resetSearch(){
-          ['s-bonbu','s-jijum','s-center','s-teacher','s-memno','s-memname','s-natrank'].forEach(function(id){
-            document.getElementById(id).value='';
+          ['s-bonbu','s-jijum','s-center','s-teacher','s-memno','s-memname','s-natrank','s-teamname'].forEach(function(id){
+            var el = document.getElementById(id);
+            if(el) el.value='';
           });
           document.getElementById('s-ctype').value='';
+          var gradeEl = document.getElementById('s-grade');
+          if(gradeEl) gradeEl.value='';
           filteredData = currentLeagueData.slice();
           currentPage=1;
           renderTable();
@@ -3053,6 +3077,7 @@
           document.getElementById('cnt-master').textContent = mCnt;
           document.getElementById('cnt-bottom').textContent = bCnt;
 
+          window.__resultPageRows = filteredData;
           for(var i=start;i<end;i++){
             var r=filteredData[i];
             var rv=rankState[r['회원번호']]||'';
@@ -3060,6 +3085,8 @@
             if(rv==='Grand Master') cls='gm';
             else if(rv==='Master') cls='master';
             else if(rv==='최하고정') cls='bottom';
+            var _gradeDisp = (r['리그명'] && r['리그명'] !== '-') ? r['리그명'].replace(/^[A-Z]\./, '') : (r['학년'] || '-');
+            var _ridx = i;
             var tr=document.createElement('tr');
             tr.innerHTML=
               '<td>'+(i+1)+'</td>'+
@@ -3069,7 +3096,9 @@
               '<td>'+r['센터타입']+'</td>'+
               '<td>'+r['교사명']+'</td>'+
               '<td>'+r['회원번호']+'</td>'+
-              '<td><b>'+r['회원명']+'</b></td>'+
+              '<td><b style="cursor:pointer;color:#1976d2;text-decoration:underline;" onclick="openResultMemberDetail('+_ridx+');">'+r['회원명']+'</b></td>'+
+              '<td>'+_gradeDisp+'</td>'+
+              '<td>'+(r['조명']||'-')+'</td>'+
               '<td>'+r['학습점수']+'</td>'+
               '<td>'+r['시간점수']+'</td>'+
               '<td>'+r['출결점수']+'</td>'+
@@ -3172,6 +3201,28 @@
         }
 
 
+        function openResultMemberDetail(rowIdx) {
+          var r = (window.__resultPageRows || [])[rowIdx];
+          if (!r) return;
+          var gradeDisp = (r['리그명'] && r['리그명'] !== '-') ? r['리그명'].replace(/^[A-Z]\./, '') : (r['학년'] || '—');
+          var detail = {
+            memberNo: r['회원번호'] || '—',
+            name: r['회원명'] || '—',
+            team: r['조명'] || '—',
+            score: r['가감총점'] || r['총점'] || '—',
+            rank: r['랭킹'] || '—',
+            point: r['전체포인트'] || '—',
+            message: '—',
+            event: '—',
+            grade: gradeDisp,
+            weeks: [
+              { w:1, study:0, time:0, attend:0, bonus:0, reset:0, total:0, points:0 }
+            ],
+            history: []
+          };
+          if (typeof openMemberDetail === 'function') openMemberDetail(detail);
+        }
+
         // ── 전역 함수 노출 (HTML onclick에서 직접 호출) ──
         window.loadResultData    = loadResultData;
         window.loadWeekData      = loadWeekData;
@@ -3181,6 +3232,7 @@
         window.downloadExcel     = downloadExcel;
         window.onRankChange      = onRankChange;
         window._renderTable      = renderTable;
+        window.openResultMemberDetail = openResultMemberDetail;
 
         // 초기 렌더
         renderTable();
