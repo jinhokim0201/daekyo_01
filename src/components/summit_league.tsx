@@ -333,7 +333,7 @@
     </div>
     <!-- 메뉴 항목 -->
     <div class="sidebar-item" onclick="showPage('league-list')">리그 목록 관리</div>
-    <div class="sidebar-item" onclick="showLeagueDetail('2026_winter')">리그 상세 관리</div>
+    <div class="sidebar-item" onclick="showLeagueDetail('2026_winter')">리그 정책 관리</div>
     <div class="sidebar-item" onclick="showPage('group-assign')">써밋 리그 조 편성</div>
     <div class="sidebar-item" onclick="showPage('member-manage')">써밋 리그 회원 관리</div>
     <div class="sidebar-item" onclick="showPage('apply-stats')">써밋 리그 신청 통계</div>
@@ -442,12 +442,12 @@
     </div>
 
     <!-- ══════════════════════════════════════════════ -->
-    <!-- PAGE 2: 리그 상세 관리 -->
+    <!-- PAGE 2: 리그 정책 관리 -->
     <!-- ══════════════════════════════════════════════ -->
     <div id="page-league-detail" class="page-section">
       <div class="page-header">
-        <div class="page-title">리그 상세 관리</div>
-        <div class="breadcrumb">🏠 > 써밋 리그 관리 > <span id="detail-breadcrumb">리그 상세 관리</span></div>
+        <div class="page-title">리그 정책 관리</div>
+        <div class="breadcrumb">🏠 > 써밋 리그 관리 > <span id="detail-breadcrumb">리그 정책 관리</span></div>
       </div>
 
       <!-- 리그 선택 -->
@@ -3737,7 +3737,7 @@ function openResultAdd() {
     if (tab === 'gift-choice') { switchGiftChoiceTab('point'); }
   }
 
-  // ── 리그 상세관리 데이터 ─────────────────────────────────────────────
+  // ── 리그 정책관리 데이터 ─────────────────────────────────────────────
   var LEAGUE_META = {
     '2026_winter': {name:'2026 윈터 리그오브매스', season:'윈터리그', status:'진행중', start:'2026-01-12', end:'2026-03-01'},
     '2025_summer': {name:'2025 서머 리그오브매스', season:'서머리그', status:'종료',   start:'2025-07-14', end:'2025-09-06'},
@@ -3790,7 +3790,7 @@ function openResultAdd() {
 
     // 브레드크럼 업데이트
     var bc = document.getElementById('detail-breadcrumb');
-    if (bc) bc.textContent = meta.name + ' 상세 관리';
+    if (bc) bc.textContent = meta.name + ' 정책 관리';
   }
 
   // init sidebar active
