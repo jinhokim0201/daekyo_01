@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>레슨 학습 분석 리포트</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Malgun Gothic', '맑은 고딕', sans-serif; font-size: 13px; background: #f5f7fa; color: #333; }
+
+/* ── HEADER ── */
+.report-header {
+  background: #fff; border-bottom: 1px solid #dde3ea;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 20px; height: 52px; position: sticky; top: 0; z-index: 100;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.07);
+}
+.header-back { background: none; border: none; cursor: pointer; font-size: 18px; color: #555; padding: 6px 10px 6px 0; display: flex; align-items: center; gap: 6px; font-size: 13px; color: #444; }
+.header-title { font-size: 15px; font-weight: 700; color: #1a3c52; text-align: center; flex: 1; }
+.header-print { background: #3a8dbf; color: #fff; border: none; border-radius: 4px; padding: 6px 14px; cursor: pointer; font-size: 12px; font-weight: 600; white-space: nowrap; }
+
+/* ── META BAR ── */
+.meta-bar {
+  background: #fff; border-bottom: 1px solid #dde3ea;
+  display: flex; align-items: center; padding: 10px 20px; gap: 0; flex-wrap: wrap;
+  font-size: 12px; color: #555;
+}
+.meta-item { display: flex; align-items: center; gap: 6px; padding: 4px 16px 4px 0; }
+.meta-item:not(:last-child) { border-right: 1px solid #dde3ea; margin-right: 16px; }
+.meta-label { color: #888; white-space: nowrap; }
+.meta-val { color: #1a3c52; font-weight: 600; }
+
+/* ── CONTENT WRAPPER ── */
+.content { max-width: 960px; margin: 0 auto; padding: 20px 16px 40px; }
+
+/* ── CARDS ── */
+.card { background: #fff; border: 1px solid #dde3ea; border-radius: 8px; padding: 18px 20px; margin-bottom: 16px; }
+.section-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; }
+.section-title { font-size: 15px; font-weight: 700; color: #1a3c52; }
+.section-time { font-size: 11px; color: #888; }
+
+/* ── SUMMARY CARD ── */
+.summary-badge { display: inline-flex; align-items: center; gap: 6px; background: #fce8e6; color: #c0392b; border-radius: 20px; padding: 4px 12px; font-size: 12px; font-weight: 700; margin-bottom: 14px; }
+.summary-body { display: flex; gap: 24px; align-items: flex-start; }
+.chart-area { flex: 0 0 260px; display: flex; flex-direction: column; align-items: center; }
+.stats-area { flex: 1; display: flex; flex-direction: column; gap: 14px; padding-top: 10px; }
+
+.stat-row { display: flex; flex-direction: column; gap: 4px; }
+.stat-row-header { display: flex; justify-content: space-between; align-items: center; }
+.stat-label { font-size: 13px; font-weight: 600; color: #333; }
+.stat-meta { font-size: 11px; color: #666; display: flex; gap: 12px; }
+.progress-track { background: #eef0f3; border-radius: 4px; height: 8px; overflow: hidden; }
+.progress-fill { height: 100%; border-radius: 4px; transition: width .4s; }
+.fill-red  { background: #e85d4a; }
+.fill-blue { background: #4a90d9; }
+.fill-green{ background: #52c41a; }
+
+.achievement-text { text-align: center; margin-top: 16px; font-size: 14px; color: #333; }
+.achievement-text strong { color: #e74c3c; }
+.score-note { text-align: right; font-size: 11px; color: #999; margin-top: 8px; }
+
+/* chart legend */
+.chart-legend { display: flex; gap: 14px; margin-top: 10px; flex-wrap: wrap; justify-content: center; }
+.legend-item { display: flex; align-items: center; gap: 5px; font-size: 11px; color: #555; }
+.legend-dot { width: 10px; height: 10px; border-radius: 50%; }
+
+/* ── 학습개념 + 총평 ── */
+.concept-row { display: flex; gap: 16px; }
+.concept-box { flex: 1; }
+.concept-title { font-size: 13px; font-weight: 700; color: #2c5f7a; margin-bottom: 8px; padding-bottom: 6px; border-bottom: 1px solid #e8eef4; }
+.concept-item { font-size: 12px; color: #444; margin-bottom: 5px; line-height: 1.5; }
+.concept-item span { color: #888; font-size: 11px; margin-right: 4px; }
+.summary-box { background: #ebf4ff; border: 1px solid #b8d9f5; border-radius: 6px; padding: 14px 16px; font-size: 12px; line-height: 1.7; color: #1a3c52; flex: 1; }
+.summary-box strong { display: block; font-size: 13px; margin-bottom: 8px; color: #1a3c52; }
+
+/* ── SUBSECTION ── */
+.subsection { margin-bottom: 20px; }
+.subsection-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+.subsection-title { font-size: 13px; font-weight: 700; color: #2c5f7a; }
+.notice-sm { font-size: 11px; color: #888; background: #f8f9fb; border: 1px solid #e8edf3; border-radius: 4px; padding: 7px 10px; margin-bottom: 8px; }
+
+/* ── TABLES ── */
+.table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+table { width: 100%; border-collapse: collapse; font-size: 12px; min-width: 480px; }
+thead tr { background: #f0f4f8; }
+th { padding: 9px 10px; text-align: center; font-weight: 600; color: #2c5f7a; border: 1px solid #dde3ea; font-size: 12px; white-space: nowrap; }
+td { padding: 7px 10px; text-align: center; border: 1px solid #e8edf3; color: #444; }
+td.left { text-align: left; }
+tr:nth-child(even) td { background: #fafbfd; }
+tr.sub-row td { background: #f5f8fc; color: #666; font-size: 11px; }
+tr.sub-row td:first-child { padding-left: 20px; color: #888; }
+
+/* ── BADGES ── */
+.badge-red { display: inline-block; background: #fde8e6; color: #c0392b; border-radius: 3px; padding: 2px 7px; font-size: 11px; font-weight: 600; }
+.badge-blue { display: inline-block; background: #e8f2fd; color: #2471a3; border-radius: 3px; padding: 2px 7px; font-size: 11px; }
+
+/* correct/wrong icons */
+.icon-o { color: #27ae60; font-size: 16px; font-weight: 700; }
+.icon-x { color: #e74c3c; font-size: 14px; font-weight: 700; }
+
+/* ── BUTTONS ── */
+.btn { border: none; border-radius: 4px; cursor: pointer; font-size: 12px; font-weight: 600; }
+.btn-primary { background: #3a8dbf; color: #fff; padding: 7px 16px; }
+.btn-outline { background: #fff; color: #3a8dbf; border: 1px solid #3a8dbf; padding: 6px 14px; }
+.btn-back { display: block; margin: 24px auto 0; background: #fff; color: #555; border: 1px solid #ccc; padding: 10px 36px; border-radius: 6px; font-size: 14px; font-weight: 600; cursor: pointer; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 767px) {
+  .report-header { padding: 0 12px; height: 48px; }
+  .header-title { font-size: 13px; }
+  .meta-bar { padding: 8px 12px; gap: 0; }
+  .meta-item { border-right: none !important; margin-right: 0 !important; padding: 3px 0; width: 100%; }
+  .content { padding: 12px 10px 32px; }
+  .card { padding: 14px 12px; }
+  .summary-body { flex-direction: column; align-items: center; gap: 16px; }
+  .chart-area { flex: none; width: 100%; }
+  .stats-area { width: 100%; padding-top: 0; }
+  .concept-row { flex-direction: column; }
+  table { font-size: 11px; }
+  th, td { padding: 7px 6px; }
+}
+
+@media (max-width: 480px) {
+  .header-title { font-size: 12px; }
+  .header-print { padding: 5px 10px; font-size: 11px; }
+  .section-title { font-size: 14px; }
+}
+
+/* ── PRINT ── */
+@media print {
+  .report-header { position: static; box-shadow: none; }
+  .header-back, .header-print, .btn-back, .btn-outline { display: none !important; }
+  .card { box-shadow: none; border: 1px solid #ccc; page-break-inside: avoid; }
+  body { background: #fff; }
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="report-header">
+  <button class="header-back" onclick="history.back()">&#8592; 돌아가기</button>
+  <h1 class="header-title">수능수학트레이닝 레슨 학습 분석 리포트</h1>
+  <button class="header-print" onclick="window.print()">인쇄</button>
+</header>
+
+<!-- META BAR -->
+<div class="meta-bar">
+  <div class="meta-item"><span class="meta-label">진도</span><span class="meta-val">2레벨 73레슨 사건과 경우의 수</span></div>
+  <div class="meta-item"><span class="meta-label">학습 완료일</span><span class="meta-val">2026.02.11</span></div>
+  <div class="meta-item"><span class="meta-label">학생정보</span><span class="meta-val">강신비 초등5 0057065553</span></div>
+</div>
+
+<div class="content">
+
+  <!-- SUMMARY CARD -->
+  <div class="card">
+    <div class="section-header">
+      <span class="section-title">레슨 학습 결과 요약</span>
+      <span class="section-time">총 학습시간 <strong>0분 43</strong></span>
+    </div>
+    <div class="summary-badge">2레벨 73레슨 <span>배</span></div>
+
+    <div class="summary-body">
+      <!-- Gauge Chart -->
+      <div class="chart-area">
+        <svg viewBox="0 0 260 150" width="100%" style="max-width:280px;">
+          <!-- Background arc (gray) -->
+          <path d="M 20 130 A 110 110 0 0 1 240 130" fill="none" stroke="#eaeaea" stroke-width="22"/>
+          <!-- 개념학습 arc (red, ~0-35%) -->
+          <path d="M 20 130 A 110 110 0 0 1 86 35" fill="none" stroke="#e85d4a" stroke-width="22" stroke-linecap="butt"/>
+          <!-- 유형탐구 arc (blue, ~35-70%) -->
+          <path d="M 86 35 A 110 110 0 0 1 186 28" fill="none" stroke="#4a90d9" stroke-width="22" stroke-linecap="butt"/>
+          <!-- 본격수능 arc (green, ~70-100%) -->
+          <path d="M 186 28 A 110 110 0 0 1 240 130" fill="none" stroke="#52c41a" stroke-width="22" stroke-linecap="butt"/>
+          <!-- Scale ticks -->
+          <text x="14" y="148" font-size="10" fill="#aaa" text-anchor="middle">0</text>
+          <text x="52" y="60" font-size="10" fill="#aaa" text-anchor="middle">40</text>
+          <text x="130" y="22" font-size="10" fill="#aaa" text-anchor="middle">60</text>
+          <text x="208" y="60" font-size="10" fill="#aaa" text-anchor="middle">80</text>
+          <text x="246" y="148" font-size="10" fill="#aaa" text-anchor="middle">100</text>
+          <!-- Center score -->
+          <circle cx="130" cy="130" r="32" fill="#e85d4a"/>
+          <text x="130" y="126" font-size="16" font-weight="bold" fill="#fff" text-anchor="middle">28</text>
+          <text x="130" y="142" font-size="11" fill="#fff" text-anchor="middle">점</text>
+        </svg>
+        <div class="chart-legend">
+          <div class="legend-item"><span class="legend-dot" style="background:#e85d4a"></span>개념학습</div>
+          <div class="legend-item"><span class="legend-dot" style="background:#4a90d9"></span>유형탐구</div>
+          <div class="legend-item"><span class="legend-dot" style="background:#52c41a"></span>본격수능</div>
+        </div>
+      </div>
+
+      <!-- Stats -->
+      <div class="stats-area">
+        <div class="stat-row">
+          <div class="stat-row-header">
+            <span class="stat-label">개념학습</span>
+            <span class="stat-meta"><span>정답률 <strong>33%</strong></span><span>학습 시간 <strong>0분 38초</strong></span></span>
+          </div>
+          <div class="progress-track"><div class="progress-fill fill-red" style="width:33%"></div></div>
+        </div>
+        <div class="stat-row">
+          <div class="stat-row-header">
+            <span class="stat-label">유형탐구</span>
+            <span class="stat-meta"><span>정답률 <strong>28%</strong></span><span>학습 시간 <strong>1분 43초</strong></span></span>
+          </div>
+          <div class="progress-track"><div class="progress-fill fill-blue" style="width:28%"></div></div>
+        </div>
+        <div class="stat-row">
+          <div class="stat-row-header">
+            <span class="stat-label">본격수능</span>
+            <span class="stat-meta"><span>정답률 <strong>25%</strong></span><span>학습 시간 <strong>0분 41초</strong></span></span>
+          </div>
+          <div class="progress-track"><div class="progress-fill fill-green" style="width:25%"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="achievement-text">강신비 님의 성취 수준은 <strong>부족</strong> 입니다.</div>
+    <div class="score-note">※ 참고: (1회 시도에 맞힌 문항 수/총례 문항 수)×100 로 소수점 버림으로 표기합니다.</div>
+  </div>
+
+  <!-- 학습개념 + 총평 -->
+  <div class="card">
+    <div class="concept-row">
+      <div class="concept-box">
+        <div class="concept-title">학습개념</div>
+        <div class="concept-item"><span>• 개념:</span> 사건과 경우의 수</div>
+        <div class="concept-item"><span>• 유형:</span> 사건 A 또는 사건 B가 일어나는 경우의 수 ①-순자 / 사건 A 또는 B가 일어나는 경우의 수 ②-수사리 / 사건 A 또는 B가 일어나는 경우의 수 ③-교통수단, 물건 선택, 가위바위보</div>
+      </div>
+      <div class="summary-box">
+        <strong>강신비님의 이번 레슨 성취 수준은 부족입니다.</strong>
+        모든 코너의 정답률이 낮습니다. 해당 변의 복습을 충분히 할 것을 권장합니다. &lt;마이노트&gt;에서 강의 동영상으로 개념을 다시 학습하고, 트레이닝으로 문제 풀이를 연습하세요. 마지막으로 오답노트를 활용해 틀린 문제를 점검 후 인쇄하여 보세요.
+      </div>
+    </div>
+  </div>
+
+  <!-- 개념학습 -->
+  <div class="card">
+    <div class="section-header">
+      <span class="section-title">개념학습</span>
+      <span class="section-time">학습 시간 0분 38초</span>
+    </div>
+
+    <!-- 영상 시청 결과 -->
+    <div class="subsection">
+      <div class="subsection-title">영상 시청 결과</div>
+      <div class="notice-sm">※ 강의 동기가 없거나 보지 않고 바로 문항을 풀면 영상 시청 결과가 표시되지 않습니다.</div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>개념</th><th>강의 시청 여부</th><th>개념 강의 보기</th></tr></thead>
+          <tbody>
+            <tr><td class="left">사건과 경우의 수</td><td><span class="icon-x">✕</span></td><td>-</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- 문항별 풀이 결과 -->
+    <div class="subsection">
+      <div class="subsection-header">
+        <div class="subsection-title">문항별 풀이 결과</div>
+        <button class="btn btn-outline">풀이 이어하기</button>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>문항번호</th><th>개념</th><th>난이도</th><th>풀이 시간</th><th>채점</th></tr></thead>
+          <tbody>
+            <tr><td>1</td><td class="left">사건과 경우의 수</td><td>최하</td><td>0분 7초</td><td><span class="icon-x">✕</span></td></tr>
+            <tr><td>2</td><td class="left">사건과 경우의 수</td><td>최하</td><td>0분 6초</td><td><span class="icon-o">○</span></td></tr>
+            <tr><td>3</td><td class="left">사건과 경우의 수</td><td>최하</td><td>0분 7초</td><td><span class="icon-x">✕</span></td></tr>
+            <tr><td>4</td><td class="left">사건과 경우의 수</td><td>최하</td><td>0분 2초</td><td><span class="icon-o">○</span></td></tr>
+            <tr><td>5</td><td class="left">사건과 경우의 수</td><td>최하</td><td>0분 2초</td><td><span class="icon-x">✕</span></td></tr>
+            <tr><td>6</td><td class="left">사건과 경우의 수</td><td>최하</td><td>0분 2초</td><td><span class="icon-x">✕</span></td></tr>
+            <tr><td>7</td><td class="left">사건과 경우의 수</td><td>최하</td><td>0분 3초</td><td><span class="icon-o">○</span></td></tr>
+            <tr><td>8</td><td class="left">사건과 경우의 수</td><td>최하</td><td>0분 3초</td><td><span class="icon-x">✕</span></td></tr>
+            <tr><td>9</td><td class="left">사건과 경우의 수</td><td>최하</td><td>0분 3초</td><td><span class="icon-x">✕</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- 유형탐구 -->
+  <div class="card">
+    <div class="section-header">
+      <span class="section-title">유형탐구</span>
+      <span class="section-time">학습 시간 1분 43초</span>
+    </div>
+
+    <!-- 유형별 정답률 -->
+    <div class="subsection">
+      <div class="subsection-title">유형별 정답률</div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>유형</th><th>정답률</th><th>맞힌 문항/풀례 문항</th><th>수준</th></tr></thead>
+          <tbody>
+            <tr>
+              <td class="left">사건과 경우의 수</td>
+              <td>33%</td><td>2/6</td><td><span class="badge-red">부족</span></td>
+            </tr>
+            <tr>
+              <td class="left">사건 A 또는 사건 B가 일어나는 경우의 수 ①-순자</td>
+              <td>42%</td><td>3/7</td><td><span class="badge-red">부족</span></td>
+            </tr>
+            <tr>
+              <td class="left">사건 A 또는 사건 B가 일어나는 경우의 수 ②-주사위</td>
+              <td>28%</td><td>2/7</td><td><span class="badge-red">부족</span></td>
+            </tr>
+            <tr>
+              <td class="left">사건 A 또는 사건 B가 일어나는 경우의 수 ③-교통수단, 물건 선택, 가위바위보</td>
+              <td>0%</td><td>0/5</td><td><span class="badge-red">부족</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- 문항별 풀이 결과 -->
+    <div class="subsection">
+      <div class="subsection-header">
+        <div class="subsection-title">문항별 풀이 결과</div>
+        <button class="btn btn-outline">풀이 이어하기</button>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>문항번호</th><th>유형</th><th>수학과 행동영역</th><th>난이도</th><th>풀이 시간</th><th>채점</th></tr></thead>
+          <tbody>
+            <tr><td>10</td><td class="left">사건과 경우의 수</td><td>주론능력</td><td>중</td><td>0분 2초</td><td><span class="icon-x">✕</span></td></tr>
+            <tr class="sub-row"><td>10-1</td><td class="left">↳사건과 경우의 수</td><td>문제해결능력</td><td>최하</td><td>0분 8초</td><td><span class="icon-x">✕</span></td></tr>
+            <tr class="sub-row"><td>10-2</td><td class="left">↳사건과 경우의 수</td><td>문제해결능력</td><td>최하</td><td>0분 8초</td><td><span class="icon-o">○</span></td></tr>
+            <tr><td>11</td><td class="left">사건과 경우의 수</td><td>이해능력</td><td>중</td><td>0분 15초</td><td><span class="icon-x">✕</span></td></tr>
+            <tr><td>12</td><td class="left">사건과 경우의 수</td><td>주론능력</td><td>하</td><td>0분 1초</td><td><span class="icon-x">✕</span></td></tr>
+            <tr><td>13</td><td class="left">사건과 경우의 수</td><td>문제해결능력</td><td>하</td><td>0분 4초</td><td><span class="icon-x">✕</span></td></tr>
+            <tr><td>14</td><td class="left">사건 A 또는 사건 B가 일어나는 경우의 수 ①-순자</td><td>계산능력</td><td>중</td><td>0분 5초</td><td><span class="icon-x">✕</span></td></tr>
+            <tr class="sub-row"><td>14-1</td><td class="left">↳사건 A 또는 사건 B가 일어나는 경우의 수 ①-순자</td><td>문제해결능력</td><td>최하</td><td>0분 2초</td><td><span class="icon-o">○</span></td></tr>
+            <tr class="sub-row"><td>14-2</td><td class="left">↳사건 A 또는 사건 B가 일어나는 경우의 수 ①-순자</td><td>문제해결능력</td><td>최하</td><td>0분 2초</td><td><span class="icon-x">✕</span></td></tr>
+            <tr class="sub-row"><td>14-3</td><td class="left">↳사건 A 또는 사건 B가 일어나는 경우의 수 ①-순자</td><td>문제해결능력</td><td>최하</td><td>0분 2초</td><td><span class="icon-x">✕</span></td></tr>
+            <tr><td>15</td><td class="left">사건 A 또는 사건 B가 일어나는 경우의 수 ①-순자</td><td>문제해결능력</td><td>하</td><td>0분 2초</td><td><span class="icon-o">○</span></td></tr>
+            <tr><td>16</td><td class="left">사건 A 또는 사건 B가 일어나는 경우의 수 ①-순자</td><td>문제해결능력</td><td>하</td><td>0분 2초</td><td><span class="icon-x">✕</span></td></tr>
+            <tr><td>17</td><td class="left">사건 A 또는 사건 B가 일어나는 경우의 수 ①-순자</td><td>문제해결능력</td><td>하</td><td>0분 1초</td><td><span class="icon-o">○</span></td></tr>
+            <tr><td>18</td><td class="left">사건 A 또는 사건 B가 일어나는 경우의 수 ②-주사위</td><td>문제해결능력</td><td>중</td><td>0분 2초</td><td><span class="icon-x">✕</span></td></tr>
+            <tr class="sub-row"><td>18-1</td><td class="left">↳사건 A 또는 사건 B가 일어나는 경우의 수 ②-주사위</td><td>문제해결능력</td><td>최하</td><td>0분 4초</td><td><span class="icon-x">✕</span></td></tr>
+            <tr class="sub-row"><td>18-2</td><td class="left">↳사건 A 또는 사건 B가 일어나는 경우의 수 ②-주사위</td><td>문제해결능력</td><td>최하</td><td>0분 4초</td><td><span class="icon-x">✕</span></td></tr>
+            <tr class="sub-row"><td>18-3</td><td class="left">↳사건 A 또는 사건 B가 일어나는 경우의 수 ②-주사위</td><td>문제해결능력</td><td>최하</td><td>0분 4초</td><td><span class="icon-o">○</span></td></tr>
+            <tr><td>19</td><td class="left">사건 A 또는 사건 B가 일어나는 경우의 수 ②-주사위</td><td>이해능력</td><td>하</td><td>0분 4초</td><td><span class="icon-x">✕</span></td></tr>
+            <tr><td>20</td><td class="left">사건 A 또는 사건 B가 일어나는 경우의 수 ②-주사위</td><td>주론능력</td><td>하</td><td>0분 2초</td><td><span class="icon-x">✕</span></td></tr>
+            <tr><td>21</td><td class="left">사건 A 또는 사건 B가 일어나는 경우의 수 ②-주사위</td><td>문제해결능력</td><td>하</td><td>0분 2초</td><td><span class="icon-o">○</span></td></tr>
+            <tr><td>22</td><td class="left">사건 A 또는 사건 B가 일어나는 경우의 수 ③-교통수단, 물건 선택, 가위바위보</td><td>이해능력</td><td>중</td><td>0분 2초</td><td><span class="icon-x">✕</span></td></tr>
+            <tr class="sub-row"><td>22-1</td><td class="left">↳사건 A 또는 사건 B가 일어나는 경우의 수 ③-교통수단, 물건 선택, 가위바위보</td><td>계산능력</td><td>최하</td><td>0분 3초</td><td><span class="icon-x">✕</span></td></tr>
+            <tr class="sub-row"><td>22-2</td><td class="left">↳사건 A 또는 사건 B가 일어나는 경우의 수 ③-교통수단, 물건 선택, 가위바위보</td><td>계산능력</td><td>최하</td><td>0분 3초</td><td><span class="icon-x">✕</span></td></tr>
+            <tr><td>23</td><td class="left">사건 A 또는 사건 B가 일어나는 경우의 수 ③-교통수단, 물건 선택, 가위바위보</td><td>문제해결능력</td><td>하</td><td>0분 4초</td><td><span class="icon-x">✕</span></td></tr>
+            <tr><td>24</td><td class="left">사건 A 또는 사건 B가 일어나는 경우의 수 ③-교통수단, 물건 선택, 가위바위보</td><td>이해능력</td><td>하</td><td>0분 3초</td><td><span class="icon-x">✕</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- 본격수능 -->
+  <div class="card">
+    <div class="section-header">
+      <span class="section-title">본격수능</span>
+      <span class="section-time">학습 시간 0분 41초</span>
+    </div>
+    <div class="subsection">
+      <div class="subsection-header">
+        <div class="subsection-title">문항별 풀이 결과</div>
+        <button class="btn btn-outline">풀이 이어하기</button>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>문항번호</th><th>개념</th><th>수학과 행동영역</th><th>난이도</th><th>풀이 시간</th><th>채점</th></tr></thead>
+          <tbody>
+            <tr><td>25</td><td class="left">사건과 경우의 수</td><td>문제해결능력</td><td>중</td><td>0분 8초</td><td><span class="icon-x">✕</span></td></tr>
+            <tr><td>26</td><td class="left">사건과 경우의 수</td><td>주론능력</td><td>중</td><td>0분 23초</td><td><span class="icon-x">✕</span></td></tr>
+            <tr><td>27</td><td class="left">사건과 경우의 수</td><td>이해능력</td><td>중</td><td>0분 4초</td><td><span class="icon-x">✕</span></td></tr>
+            <tr><td>28</td><td class="left">사건과 경우의 수</td><td>주론능력</td><td>상</td><td>0분 5초</td><td><span class="icon-o">○</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bottom button -->
+  <button class="btn-back" onclick="history.back()">목록으로</button>
+
+</div>
+</body>
+</html>
