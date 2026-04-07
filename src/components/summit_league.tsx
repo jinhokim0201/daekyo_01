@@ -1277,7 +1277,7 @@
           <div class="search-row"><span class="search-label">회원명</span><input class="form-input" style="flex:1;" placeholder="회원명 입력"></div>
           <div class="search-row"><span class="search-label">회원번호</span><input class="form-input" style="flex:1;" placeholder="회원번호 입력"></div>
         </div>
-        <div style="text-align:center;"><button class="btn btn-primary" style="padding:8px 40px;">검색</button></div>
+        <div style="text-align:center; margin-top:8px; padding-bottom:4px;"><button class="btn btn-primary" style="padding:8px 40px;">검색</button></div>
       </div>
 
       <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
@@ -1393,16 +1393,12 @@
             var dropoutCell = r.dropout
               ? '<span class="badge badge-red">탈락</span>'
               : '<span class="badge badge-green" style="font-size:11px;">진행중</span>';
-            // 관리 column: blue button (differentiated from green badge above)
+            // 관리 column: blue "진행중" button (visually distinct from green badge in 리그 탈락 여부)
             var manageCell;
             if (r.dropout) {
               manageCell = '–';
             } else if (r.detail) {
-              if (r.team && r.team !== '– –') {
-                manageCell = '<button class="btn btn-primary btn-sm" style="min-width:68px;" onclick="openMemberDetail(window.__memberDetails[' + i + '])">진행중</button>';
-              } else {
-                manageCell = '<button class="btn btn-secondary btn-sm" onclick="openMemberDetail(window.__memberDetails[' + i + '])">상세보기</button>';
-              }
+              manageCell = '<button class="btn btn-primary btn-sm" style="min-width:68px;" onclick="openMemberDetail(window.__memberDetails[' + i + '])">진행중</button>';
             } else {
               manageCell = '–';
             }
