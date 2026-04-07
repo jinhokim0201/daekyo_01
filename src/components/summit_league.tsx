@@ -333,7 +333,7 @@
     </div>
     <!-- 메뉴 항목 -->
     <div class="sidebar-item" onclick="showPage('league-list')">리그 목록 관리</div>
-    <div class="sidebar-item" onclick="showLeagueDetail('2026_winter')">리그 상세 관리</div>
+    <div class="sidebar-item" onclick="showLeagueDetail('2026_winter')">리그 정책 관리</div>
     <div class="sidebar-item" onclick="showPage('group-assign')">써밋 리그 조 편성</div>
     <div class="sidebar-item" onclick="showPage('member-manage')">써밋 리그 회원 관리</div>
     <div class="sidebar-item" onclick="showPage('apply-stats')">써밋 리그 신청 통계</div>
@@ -389,7 +389,7 @@
               <td>2025.07.14 ~ 2025.09.06</td>
               <td>38,204명</td>
               <td><span class="badge badge-gray">종료</span></td>
-              <td><button class="btn btn-secondary btn-sm" onclick="showLeagueDetail('2025_summer')">상세관리</button> <button class="btn btn-gray btn-sm" style="margin-left:4px;">조 편성</button></td>
+              <td><button class="btn btn-secondary btn-sm" onclick="showLeagueDetail('2025_summer')">상세관리</button> <button class="btn btn-gray btn-sm" style="margin-left:4px;">조 편성</button> <button class="btn btn-primary btn-sm" style="margin-left:4px;" onclick="showPage('result-manage')">결과보기</button></td>
             </tr>
             <tr>
               <td>5</td>
@@ -398,7 +398,7 @@
               <td>2025.01.13 ~ 2025.03.01</td>
               <td>35,190명</td>
               <td><span class="badge badge-gray">종료</span></td>
-              <td><button class="btn btn-secondary btn-sm" onclick="showLeagueDetail('2025_winter')">상세관리</button> <button class="btn btn-gray btn-sm" style="margin-left:4px;">조 편성</button></td>
+              <td><button class="btn btn-secondary btn-sm" onclick="showLeagueDetail('2025_winter')">상세관리</button> <button class="btn btn-gray btn-sm" style="margin-left:4px;">조 편성</button> <button class="btn btn-primary btn-sm" style="margin-left:4px;" onclick="showPage('result-manage')">결과보기</button></td>
             </tr>
             <tr>
               <td>4</td>
@@ -407,7 +407,7 @@
               <td>2024.07.15 ~ 2024.09.07</td>
               <td>33,817명</td>
               <td><span class="badge badge-gray">종료</span></td>
-              <td><button class="btn btn-secondary btn-sm" onclick="showLeagueDetail('2024_summer')">상세관리</button> <button class="btn btn-gray btn-sm" style="margin-left:4px;">조 편성</button></td>
+              <td><button class="btn btn-secondary btn-sm" onclick="showLeagueDetail('2024_summer')">상세관리</button> <button class="btn btn-gray btn-sm" style="margin-left:4px;">조 편성</button> <button class="btn btn-primary btn-sm" style="margin-left:4px;" onclick="showPage('result-manage')">결과보기</button></td>
             </tr>
             <tr>
               <td>3</td>
@@ -416,7 +416,7 @@
               <td>2024.01.08 ~ 2024.02.24</td>
               <td>31,042명</td>
               <td><span class="badge badge-gray">종료</span></td>
-              <td><button class="btn btn-secondary btn-sm" onclick="showLeagueDetail('2024_winter')">상세관리</button> <button class="btn btn-gray btn-sm" style="margin-left:4px;">조 편성</button></td>
+              <td><button class="btn btn-secondary btn-sm" onclick="showLeagueDetail('2024_winter')">상세관리</button> <button class="btn btn-gray btn-sm" style="margin-left:4px;">조 편성</button> <button class="btn btn-primary btn-sm" style="margin-left:4px;" onclick="showPage('result-manage')">결과보기</button></td>
             </tr>
             <tr>
               <td>2</td>
@@ -425,7 +425,7 @@
               <td>2023.07.17 ~ 2023.09.02</td>
               <td>28,350명</td>
               <td><span class="badge badge-gray">종료</span></td>
-              <td><button class="btn btn-secondary btn-sm" onclick="showLeagueDetail('2023_summer')">상세관리</button> <button class="btn btn-gray btn-sm" style="margin-left:4px;">조 편성</button></td>
+              <td><button class="btn btn-secondary btn-sm" onclick="showLeagueDetail('2023_summer')">상세관리</button> <button class="btn btn-gray btn-sm" style="margin-left:4px;">조 편성</button> <button class="btn btn-primary btn-sm" style="margin-left:4px;" onclick="showPage('result-manage')">결과보기</button></td>
             </tr>
             <tr>
               <td>1</td>
@@ -434,7 +434,7 @@
               <td>2023.01.09 ~ 2023.02.25</td>
               <td>24,918명</td>
               <td><span class="badge badge-gray">종료</span></td>
-              <td><button class="btn btn-secondary btn-sm" onclick="showLeagueDetail('2023_winter')">상세관리</button> <button class="btn btn-gray btn-sm" style="margin-left:4px;">조 편성</button></td>
+              <td><button class="btn btn-secondary btn-sm" onclick="showLeagueDetail('2023_winter')">상세관리</button> <button class="btn btn-gray btn-sm" style="margin-left:4px;">조 편성</button> <button class="btn btn-primary btn-sm" style="margin-left:4px;" onclick="showPage('result-manage')">결과보기</button></td>
             </tr>
           </tbody>
         </table>
@@ -442,12 +442,12 @@
     </div>
 
     <!-- ══════════════════════════════════════════════ -->
-    <!-- PAGE 2: 리그 상세 관리 -->
+    <!-- PAGE 2: 리그 정책 관리 -->
     <!-- ══════════════════════════════════════════════ -->
     <div id="page-league-detail" class="page-section">
       <div class="page-header">
-        <div class="page-title">리그 상세 관리</div>
-        <div class="breadcrumb">🏠 > 써밋 리그 관리 > <span id="detail-breadcrumb">리그 상세 관리</span></div>
+        <div class="page-title">리그 정책 관리</div>
+        <div class="breadcrumb">🏠 > 써밋 리그 관리 > <span id="detail-breadcrumb">리그 정책 관리</span></div>
       </div>
 
       <!-- 리그 선택 -->
@@ -1265,21 +1265,23 @@
       </div>
 
       <div class="search-box">
-        <div class="search-title">🔍 검색</div>
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
+          <div class="search-title" style="margin:0;">검색 조건</div>
+          <button class="btn btn-sm" style="background:#27ae60; color:#fff; border:none; font-size:11px; padding:6px 18px; border-radius:5px; font-weight:600;">엑셀 다운로드</button>
+        </div>
         <div class="search-grid">
           <div class="search-row"><span class="search-label">리그명</span><select class="form-select" style="flex:1;"><option>2026 윈터 리그오브매스</option><option>2025 서머 리그오브매스</option></select></div>
-          <div class="search-row"><span class="search-label">본부선택</span><select class="form-select" style="flex:1;"><option>선택</option></select></div>
-          <div class="search-row"><span class="search-label">지점선택</span><select class="form-select" style="flex:1;"><option>선택</option></select></div>
-          <div class="search-row"><span class="search-label">센터선택</span><select class="form-select" style="flex:1;"><option>선택</option></select></div>
+          <div class="search-row"><span class="search-label">본부</span><select class="form-select" style="flex:1;"><option>전체 학년</option></select></div>
+          <div class="search-row"><span class="search-label">지점</span><input class="form-input" style="flex:1;" placeholder="검색어 입력"></div>
+          <div class="search-row"><span class="search-label">센터</span><input class="form-input" style="flex:1;" placeholder="센터명 입력"></div>
           <div class="search-row"><span class="search-label">회원명</span><input class="form-input" style="flex:1;" placeholder="회원명 입력"></div>
           <div class="search-row"><span class="search-label">회원번호</span><input class="form-input" style="flex:1;" placeholder="회원번호 입력"></div>
         </div>
-        <div style="text-align:center;"><button class="btn btn-primary" style="padding:8px 40px;">검색</button></div>
+        <div style="text-align:center; margin-top:8px; padding-bottom:4px;"><button class="btn btn-primary" style="padding:8px 40px;">검색</button></div>
       </div>
 
       <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
         <div class="count-badge" style="margin:0;">총 43,428건</div>
-        <button class="btn btn-gray btn-sm">엑셀 다운로드</button>
       </div>
 
       <div class="card" style="padding:0; overflow:hidden;">
@@ -1288,7 +1290,7 @@
             <tr>
               <th>No</th><th>교사</th><th>이름</th><th>학년</th><th>조 이름</th>
               <th>누적 점수</th><th>누적 포인트</th><th>현재 등수</th>
-              <th>자세히보기</th><th>리그 탈락 여부</th>
+              <th>자세히보기</th><th>리그 탈락 여부</th><th>관리</th>
             </tr>
           </thead>
           <tbody id="member-tbody"></tbody>
@@ -1379,20 +1381,27 @@
           tbody.innerHTML = '';
           var start = (curMemberPage - 1) * PAGE_SIZE;
           var end = Math.min(start + PAGE_SIZE, filteredMembers.length);
+          window.__memberDetails = window.__memberDetails || [];
           for (var i = start; i < end; i++) {
             var r = filteredMembers[i];
-            var no = start + i - start + 1;
             var rankCell = r.rank > 0 ? r.rank : '–';
-            var detailCell = '';
-            if (!r.dropout && r.detail) {
-              var d = r.detail;
-              detailCell = (function(gidx){ window.__memberDetails = window.__memberDetails||[]; window.__memberDetails[gidx]=r.detail; return '<button class="btn btn-secondary btn-sm" onclick="openMemberDetail(window.__memberDetails['+gidx+'])">자세히보기</button>'; })(start+i);
-            } else {
-              detailCell = '–';
-            }
+            // Store detail for popup access
+            window.__memberDetails[i] = r.detail;
+            // 자세히보기 column: blank (detail accessed via 관리 column)
+            var detailCell = '–';
+            // 리그 탈락 여부: green "진행중" badge for active, red "탈락" for eliminated
             var dropoutCell = r.dropout
               ? '<span class="badge badge-red">탈락</span>'
-              : '–';
+              : '<span class="badge badge-green" style="font-size:11px;">진행중</span>';
+            // 관리 column: blue "진행중" button (visually distinct from green badge in 리그 탈락 여부)
+            var manageCell;
+            if (r.dropout) {
+              manageCell = '–';
+            } else if (r.detail) {
+              manageCell = '<button class="btn btn-primary btn-sm" style="min-width:68px;" onclick="openMemberDetail(window.__memberDetails[' + i + '])">진행중</button>';
+            } else {
+              manageCell = '–';
+            }
             var tr = document.createElement('tr');
             tr.innerHTML =
               '<td>' + (i + 1) + '</td>' +
@@ -1404,7 +1413,8 @@
               '<td>' + r.point + '</td>' +
               '<td>' + rankCell + '</td>' +
               '<td>' + detailCell + '</td>' +
-              '<td>' + dropoutCell + '</td>';
+              '<td>' + dropoutCell + '</td>' +
+              '<td>' + manageCell + '</td>';
             tbody.appendChild(tr);
           }
           renderMemberPaging();
@@ -1544,12 +1554,13 @@
                       <th style="padding:7px 12px; border:1px solid #dde3ea; text-align:center; color:#2c5f7a;">지급 포인트</th>
                       <th style="padding:7px 12px; border:1px solid #dde3ea; text-align:center; color:#2c5f7a;">사유</th>
                       <th style="padding:7px 12px; border:1px solid #dde3ea; text-align:center; color:#2c5f7a;">메모</th>
+                      <th style="padding:7px 12px; border:1px solid #dde3ea; text-align:center; color:#2c5f7a;">관리자ID</th>
                       <th style="padding:7px 12px; border:1px solid #dde3ea; text-align:center; color:#2c5f7a;">지급 후 누적</th>
                     </tr>
                   </thead>
                   <tbody id="md-point-log-tbody">
                     <tr>
-                      <td colspan="5" style="padding:14px; text-align:center; color:#aaa; border:1px solid #eef2f7; font-size:12px;">추가 지급 내역이 없습니다.</td>
+                      <td colspan="6" style="padding:14px; text-align:center; color:#aaa; border:1px solid #eef2f7; font-size:12px;">추가 지급 내역이 없습니다.</td>
                     </tr>
                   </tbody>
                 </table>
@@ -1603,7 +1614,8 @@
 
       // 리그 정보 테이블
       var infoRows = [
-        ['이름', data.name, '현재 등수', data.rank],
+        ['이름', data.name, '회원번호', data.memberNo || data['회원번호'] || '—'],
+        ['학년', data.grade || '—', '현재 등수', data.rank],
         ['조이름', data.team, '누적 점수', data.score],
         ['포춘메시지', data.message, '누적 포인트', data.point],
         ['이벤트선물', data.event, '', ''],
@@ -1720,7 +1732,7 @@
         +String(now.getDate()).padStart(2,'0')+' '
         +String(now.getHours()).padStart(2,'0')+':'
         +String(now.getMinutes()).padStart(2,'0');
-      _mdPointLogs.unshift({ ts:ts, pts:pts, reason:reason, memo:memo||'-', after:_mdCurrentPoint });
+      _mdPointLogs.unshift({ ts:ts, pts:pts, reason:reason, memo:memo||'-', after:_mdCurrentPoint, adminId:'admin_' + (Math.floor(Math.random()*9000)+1001) });
       document.getElementById('md-current-point').textContent = _mdCurrentPoint.toLocaleString(undefined,{minimumFractionDigits:0,maximumFractionDigits:2});
       document.getElementById('md-add-point').value = '';
       document.getElementById('md-point-reason').value = '';
@@ -1731,7 +1743,7 @@
     function renderPointLog() {
       var tbody = document.getElementById('md-point-log-tbody');
       if(!_mdPointLogs.length) {
-        tbody.innerHTML = '<tr><td colspan="5" style="padding:14px; text-align:center; color:#aaa; border:1px solid #eef2f7; font-size:12px;">추가 지급 내역이 없습니다.</td></tr>';
+        tbody.innerHTML = '<tr><td colspan="6" style="padding:14px; text-align:center; color:#aaa; border:1px solid #eef2f7; font-size:12px;">추가 지급 내역이 없습니다.</td></tr>';
         return;
       }
       tbody.innerHTML = '';
@@ -1745,6 +1757,7 @@
           '<td style="padding:7px 12px; text-align:center; border:1px solid #eef2f7; font-weight:700; color:'+ptsColor+';">'+ptsText+' P</td>'+
           '<td style="padding:7px 12px; text-align:center; border:1px solid #eef2f7;">'+log.reason+'</td>'+
           '<td style="padding:7px 12px; text-align:center; border:1px solid #eef2f7; color:#666;">'+log.memo+'</td>'+
+          '<td style="padding:7px 12px; text-align:center; border:1px solid #eef2f7; color:#888; font-size:11px;">'+(log.adminId||'—')+'</td>'+
           '<td style="padding:7px 12px; text-align:center; border:1px solid #eef2f7; font-weight:700; color:#2c5f7a;">'+log.after.toLocaleString()+'</td>';
         tbody.appendChild(tr);
       });
@@ -1766,101 +1779,124 @@
       </div>
 
       <style>
-        #stats-search-box {
-          background:#f7fbfe; border:1px solid #dde3ea; border-radius:6px;
-          padding:14px 20px; margin-bottom:16px;
-        }
-        #stats-search-box .s-row { display:flex; align-items:center; gap:10px; margin-bottom:10px; }
-        #stats-search-box .s-label { font-size:12.5px; font-weight:600; color:#555; min-width:40px; }
-        #stats-table { width:100%; border-collapse:collapse; font-size:12.5px; }
-        #stats-table thead tr { background:#4a90b8; color:#fff; }
-        #stats-table thead th { padding:10px 14px; text-align:center; font-weight:600; border:1px solid #3a7aa8; }
-        #stats-table tbody tr { border-bottom:1px solid #eef2f7; }
-        #stats-table tbody tr:hover { background:#f7fbfe; }
-        #stats-table tbody td { padding:9px 14px; text-align:center; border:1px solid #eef2f7; vertical-align:middle; }
-        #stats-table tbody td.td-left { text-align:left; }
-        #stats-table tfoot tr { background:#e8f4fb; font-weight:700; }
-        #stats-table tfoot td { padding:10px 14px; border:1px solid #dde3ea; text-align:center; color:#2c5f7a; }
+        /* ── 신청 통계 ── */
+        .stats-sum-cards { display:grid; grid-template-columns:repeat(4,1fr); gap:14px; margin-bottom:14px; }
+        .stats-sum-card { background:#fff; border:1px solid #dde3ea; border-radius:10px; padding:18px 18px 14px; }
+        .stats-sum-card .sc-label { font-size:12px; color:#888; margin-bottom:8px; }
+        .stats-sum-card .sc-value { font-size:28px; font-weight:700; line-height:1.15; }
+        .stats-charts-row { display:grid; grid-template-columns:62fr 38fr; gap:14px; margin-bottom:14px; }
+        .stats-chart-panel { background:#fff; border:1px solid #dde3ea; border-radius:10px; padding:18px 18px 12px; position:relative; }
+        .stats-chart-title { font-size:14px; font-weight:700; color:#2c4f6c; margin-bottom:14px; }
+        .stats-bar-area { display:flex; align-items:flex-end; height:280px; width:100%; padding-bottom:26px; border-bottom:1px solid #dde3ea; position:relative; }
+        .stats-bar-item { display:flex; flex-direction:column; align-items:center; flex:1; }
+        .stats-bar-value { font-size:10px; font-weight:600; color:#2c4f6c; margin-bottom:3px; }
+        .stats-bar-col { border-radius:4px 4px 0 0; width:56px; }
+        .stats-bar-label { font-size:10px; color:#888; margin-top:5px; }
+        .stats-empty-overlay { position:absolute; inset:0; background:rgba(255,255,255,0.88); display:flex; flex-direction:column; align-items:center; justify-content:center; border-radius:8px; }
+        .stats-empty-icon { font-size:40px; margin-bottom:10px; }
+        .stats-empty-title { font-size:16px; font-weight:700; color:#2c4f6c; margin-bottom:5px; }
+        .stats-empty-sub { font-size:13px; color:#888; }
+        .stats-info-banner { background:#e3f2fd; border:1px solid #90caf9; border-radius:10px; padding:14px 20px; margin-bottom:14px; font-size:13px; color:#1665c0; }
+        .stats-dday-pill { display:flex; align-items:center; justify-content:center; background:#e3f2fd; border-radius:26px; padding:14px 28px; font-size:14px; font-weight:700; color:#1665c0; margin:20px auto 0; width:fit-content; }
+        #stats-search-bar { background:#f7f9fb; border:1px solid #dde5ee; border-radius:8px; padding:10px 14px 10px; margin-bottom:12px; display:flex; align-items:center; gap:12px; }
+        #stats-search-bar .sf-group { display:flex; flex-direction:column; gap:3px; flex:1; }
+        #stats-search-bar .sf-label { font-size:10.5px; font-weight:500; color:#556; }
+        .stats-count-pill { display:inline-flex; align-items:center; background:#faa523; color:#fff; font-weight:700; font-size:11px; padding:4px 14px; border-radius:13px; }
+        #stats-table { width:100%; border-collapse:collapse; font-size:11px; white-space:nowrap; }
+        #stats-table thead tr { background:#4a90b9; color:#fff; }
+        #stats-table thead th { padding:9px 10px; text-align:center; font-weight:600; border:1px solid #3b7aa8; font-size:11px; }
+        #stats-table tbody tr:nth-child(even) { background:#f7fafe; }
+        #stats-table tbody td { padding:8px 10px; text-align:center; border:1px solid #e5ecf2; vertical-align:middle; }
+        #stats-table tbody td.td-left { text-align:left; font-size:10px; }
+        #stats-table tfoot tr { background:#e8f4fb; }
+        #stats-table tfoot td { padding:9px 10px; border:1px solid #ccd9e5; font-weight:700; color:#2c5f7a; font-size:11px; }
+        .stats-rate-wrap { display:flex; align-items:center; gap:7px; }
+        .stats-rate-track { flex:1; height:12px; border-radius:4px; background:#e5ecf2; min-width:60px; }
+        .stats-rate-fill { height:12px; border-radius:4px; }
         .stats-paging { display:flex; gap:4px; align-items:center; justify-content:center; margin-top:14px; }
-        .stats-paging button {
-          min-width:30px; height:30px; border:1px solid #dde3ea; border-radius:4px;
-          background:#fff; cursor:pointer; font-size:12px; color:#555; transition:all .15s;
-        }
+        .stats-paging button { min-width:30px; height:30px; border:1px solid #dde3ea; border-radius:4px; background:#fff; cursor:pointer; font-size:12px; color:#555; }
         .stats-paging button.active { background:#4a90b8; color:#fff; border-color:#4a90b8; font-weight:700; }
         .stats-paging button:hover:not(.active) { background:#e8f4fb; }
         .zero-red { color:#e74c3c; font-weight:700; }
       </style>
 
-      <!-- 검색 -->
-      <div id="stats-search-box">
-        <div style="font-weight:700; color:#4a90b8; margin-bottom:12px; font-size:13px;">🔍 검색</div>
-        <div class="s-row">
-          <span class="s-label">본부</span>
-          <select class="form-select" id="st-bonbu" style="width:180px;">
-            <option value="">전체</option>
-            <option>대교 경기본부</option><option>대교 경산본부</option><option>대교 경인본부</option>
-            <option>대교 부경본부</option><option>대교 서울강원본부</option><option>대교 서울남동본부</option>
-            <option>대교 서울서북본부</option><option>대교 충청본부</option><option>대교 호남본부</option>
-          </select>
-          <span class="s-label" style="margin-left:16px;">지점</span>
-          <select class="form-select" id="st-jijum" style="width:220px;">
-            <option value="">전체</option>
-            <option>대교 군포산본 Hive</option><option>대교 안양만안 Hive</option>
-            <option>대교 대구월성 Hive</option><option>대교 부산강서 Hive</option>
-            <option>대교 양산 Hive</option><option>대교 용인 Hive</option><option>대교 하남 Hive</option>
-          </select>
-          <span class="s-label" style="margin-left:16px;">팀/센터</span>
-          <select class="form-select" id="st-center" style="width:220px;">
-            <option value="">전체</option>
-            <option>대교 군포산본 Hive 001팀</option><option>대교 안양만안 Hive 001팀</option>
-            <option>[LC]명지국제</option><option>대교 양산 Hive 001팀</option>
-          </select>
+      <!-- ── 데이터 없음 상태 ── -->
+      <div id="stats-empty-state" style="display:none;">
+        <div class="stats-info-banner">ℹ&nbsp; 신청 기간(2025.12.01 ~ 2025.12.31) 시작 후 통계가 집계됩니다. 현재는 통계 데이터가 없습니다.</div>
+        <div class="stats-sum-cards">
+          <div class="stats-sum-card" style="background:#f2f3f4;text-align:center;"><div class="sc-label">총 신청 인원</div><div class="sc-value" style="color:#c7ccd1;">0명</div><div style="font-size:11px;color:#b2b8bd;margin-top:6px;">신청 기간 전</div></div>
+          <div class="stats-sum-card" style="background:#f2f3f4;text-align:center;"><div class="sc-label">윈터리그 신청</div><div class="sc-value" style="color:#c7ccd1;">0명</div><div style="font-size:11px;color:#b2b8bd;margin-top:6px;">신청 기간 전</div></div>
+          <div class="stats-sum-card" style="background:#f2f3f4;text-align:center;"><div class="sc-label">완료 인원</div><div class="sc-value" style="color:#c7ccd1;">0명</div><div style="font-size:11px;color:#b2b8bd;margin-top:6px;">신청 기간 전</div></div>
+          <div class="stats-sum-card" style="background:#f2f3f4;text-align:center;"><div class="sc-label">탈락 인원</div><div class="sc-value" style="color:#c7ccd1;">0명</div><div style="font-size:11px;color:#b2b8bd;margin-top:6px;">신청 기간 전</div></div>
         </div>
-        <div style="text-align:center;">
-          <button class="btn btn-primary" style="padding:8px 40px;" onclick="doStatsSearch()">검색</button>
-          <button class="btn btn-gray" style="padding:8px 20px; margin-left:6px;" onclick="resetStatsSearch()">초기화</button>
-        </div>
+        <div class="stats-dday-pill">📅&nbsp; 신청 기간 시작까지&nbsp; D-60</div>
       </div>
 
-      <!-- 건수 + 엑셀 -->
-      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
-        <div class="count-badge" style="margin:0;">총 <span id="stats-count">2,621</span>건</div>
-        <button class="btn btn-gray btn-sm" onclick="downloadStatsExcel()">엑셀 다운로드</button>
-      </div>
+      <!-- ── 데이터 있음 상태 ── -->
+      <div id="stats-data-state">
+        <!-- 요약 카드 -->
+        <div class="stats-sum-cards">
+          <div class="stats-sum-card"><div class="sc-label">총 신청 인원</div><div class="sc-value" style="color:#2c4f6c;">43,428명</div></div>
+          <div class="stats-sum-card"><div class="sc-label">윈터리그 신청</div><div class="sc-value" style="color:#4a90b8;">43,428명</div></div>
+          <div class="stats-sum-card"><div class="sc-label">완료 인원</div><div class="sc-value" style="color:#27ae60;">41,205명</div></div>
+          <div class="stats-sum-card"><div class="sc-label">탈락 인원</div><div class="sc-value" style="color:#e74c3c;">2,223명</div></div>
+        </div>
 
-      <!-- 테이블 -->
-      <div class="card" style="padding:0; overflow:hidden;">
-        <table id="stats-table">
-          <thead>
-            <tr>
-              <th>지점</th>
-              <th>팀/센터명</th>
-              <th>교사명</th>
-              <th>총 학생 수</th>
-              <th>신청완료</th>
-              <th>신청대기</th>
-              <th>미신청</th>
-              <th>신청율</th>
-            </tr>
-          </thead>
-          <tbody id="stats-tbody"></tbody>
-          <tfoot>
-            <tr>
-              <td colspan="3">합계</td>
-              <td id="st-tot-total">-</td>
-              <td id="st-tot-done">-</td>
-              <td id="st-tot-wait">-</td>
-              <td id="st-tot-none">-</td>
-              <td id="st-tot-rate">-</td>
-            </tr>
-          </tfoot>
-        </table>
-        <div class="stats-paging" id="stats-paging"></div>
-        <div style="height:12px;"></div>
+        <!-- 검색 -->
+        <div id="stats-search-bar">
+          <div style="font-size:11px;font-weight:600;color:#2c5f7a;white-space:nowrap;">🔍 검색</div>
+          <div class="sf-group">
+            <label class="sf-label">본부</label>
+            <input class="form-input" id="st-bonbu" placeholder="전체 본부" style="height:30px;font-size:11px;border:1px solid #ccd1d9;border-radius:4px;padding:0 9px;background:#fff;">
+          </div>
+          <div class="sf-group">
+            <label class="sf-label">지점</label>
+            <input class="form-input" id="st-jijum" placeholder="전체 지점" style="height:30px;font-size:11px;border:1px solid #ccd1d9;border-radius:4px;padding:0 9px;background:#fff;">
+          </div>
+          <div class="sf-group">
+            <label class="sf-label">팀/센터</label>
+            <input class="form-input" id="st-center" placeholder="팀/센터명 입력" style="height:30px;font-size:11px;border:1px solid #ccd1d9;border-radius:4px;padding:0 9px;background:#fff;">
+          </div>
+          <button style="background:#4a90b9;color:#fff;border:none;height:30px;padding:0 18px;border-radius:4px;font-size:11px;font-weight:600;cursor:pointer;margin-top:14px;" onclick="doStatsSearch()">검색</button>
+          <button style="background:#eaedf2;color:#4d4d59;border:1px solid #ccd1d9;height:30px;padding:0 14px;border-radius:4px;font-size:11px;cursor:pointer;margin-top:14px;" onclick="resetStatsSearch()">초기화</button>
+        </div>
+
+        <!-- 건수 + 엑셀 -->
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
+          <div class="stats-count-pill">총 <span id="stats-count">2,621</span>건</div>
+          <button style="background:#eaedf2;color:#333340;border:1px solid #ccd1d9;height:28px;padding:0 14px;border-radius:4px;font-size:11px;cursor:pointer;" onclick="downloadStatsExcel()">📥 엑셀 다운로드</button>
+        </div>
+
+        <!-- 테이블 -->
+        <div class="card" style="padding:0; overflow:hidden;">
+          <table id="stats-table">
+            <thead>
+              <tr>
+                <th>지점</th><th>팀/센터명</th><th>교사명</th>
+                <th>총 학생 수</th><th>신청완료</th><th>신청대기</th><th>미신청</th><th>신청율</th>
+              </tr>
+            </thead>
+            <tbody id="stats-tbody"></tbody>
+            <tfoot>
+              <tr>
+                <td colspan="3">전체 합계</td>
+                <td id="st-tot-total">-</td><td id="st-tot-done">-</td>
+                <td id="st-tot-wait">-</td><td id="st-tot-none">-</td><td id="st-tot-rate">-</td>
+              </tr>
+            </tfoot>
+          </table>
+          <div class="stats-paging" id="stats-paging"></div>
+          <div style="height:12px;"></div>
+        </div>
       </div>
 
       <script>
       (function(){
+        // ── 데이터 없음 / 있음 상태 전환 ──
+        var HAS_DATA = true;
+        document.getElementById('stats-empty-state').style.display = HAS_DATA ? 'none' : 'block';
+        document.getElementById('stats-data-state').style.display  = HAS_DATA ? 'block' : 'none';
+
         var STATS_DATA = [
           {bonbu:'대교 경기본부',    jijum:'대교 군포산본 Hive',    center:'대교 군포산본 Hive 001팀',    teacher:'송자영', total:18, done:18, wait:0, none:0},
           {bonbu:'대교 경기본부',    jijum:'대교 군포산본 Hive',    center:'대교 군포산본 Hive 002팀',    teacher:'한미정', total:22, done:20, wait:1, none:1},
@@ -1987,8 +2023,8 @@
           }).join('');
 
           var colHeaders = type==='total'
-            ? '<th style="padding:9px 14px; background:#3a7fa0; color:#fff;">구분</th><th style="padding:9px 14px; background:#3a7fa0; color:#fff;">신청상태</th><th style="padding:9px 14px; background:#3a7fa0; color:#fff;">회원명</th><th style="padding:9px 14px; background:#3a7fa0; color:#fff;">회원번호</th>'
-            : '<th style="padding:9px 14px; background:#3a7fa0; color:#fff;">구분</th><th style="padding:9px 14px; background:#3a7fa0; color:#fff;">회원명</th><th style="padding:9px 14px; background:#3a7fa0; color:#fff;">회원번호</th>';
+            ? '<th style="padding:9px 14px; background:#4a90b9; color:#fff;">구분</th><th style="padding:9px 14px; background:#4a90b9; color:#fff;">신청상태</th><th style="padding:9px 14px; background:#4a90b9; color:#fff;">회원명</th><th style="padding:9px 14px; background:#4a90b9; color:#fff;">회원번호</th>'
+            : '<th style="padding:9px 14px; background:#4a90b9; color:#fff;">구분</th><th style="padding:9px 14px; background:#4a90b9; color:#fff;">회원명</th><th style="padding:9px 14px; background:#4a90b9; color:#fff;">회원번호</th>';
 
           var modal = document.getElementById('modal-stats-members');
           modal.innerHTML = '' +
@@ -2023,9 +2059,9 @@
         window._renderStats = renderStats;
 
         function resetStatsSearch(){
-          document.getElementById('st-bonbu').value='';
-          document.getElementById('st-jijum').value='';
-          document.getElementById('st-center').value='';
+          ['st-bonbu','st-jijum','st-center'].forEach(function(id){
+            var el=document.getElementById(id); if(el) el.value='';
+          });
           filteredStats=STATS_DATA.slice(); curPage=1; renderStats();
         }
         window.resetStatsSearch = resetStatsSearch;
@@ -2051,12 +2087,13 @@
             var r=filteredStats[i];
             var rate=r.total>0?(r.done/r.total*100).toFixed(1)+'%':'0%';
             var rateNum=r.total>0?r.done/r.total*100:0;
-            var rateColor=rateNum===100?'#2c5f7a':rateNum>=75?'#555':'#e74c3c';
+            var fillColor=rateNum>=90?'#27ae60':rateNum>=70?'#4a90b9':'#e67e22';
+            var fillW=Math.min(100,rateNum).toFixed(1);
             var noneHtml=r.none===0
               ?'<span class="zero-red">0</span>'
               :'<span class="zero-red">'+r.none+'</span>';
             var rowIdx = filteredStats.indexOf(r);
-            var clickable = 'style="cursor:pointer;text-decoration:underline dotted;color:#2c5f7a;font-weight:700;"';
+            var clickable = 'style="cursor:pointer;text-decoration:underline;text-underline-offset:2px;color:#4a90b9;font-weight:700;"';
             var noneClickable = r.none===0
               ? '<span class="zero-red">0</span>'
               : '<span class="zero-red" ' + clickable + ' onclick="openStatsMembersModal(' + rowIdx + ',\'none\')">'+r.none+'</span>';
@@ -2069,7 +2106,7 @@
               '<td><span ' + clickable + ' onclick="openStatsMembersModal(' + rowIdx + ',\'done\')">'+r.done+'</span></td>'+
               '<td><span ' + (r.wait>0 ? clickable : '') + ' onclick="openStatsMembersModal(' + rowIdx + ',\'wait\')">'+r.wait+'</span></td>'+
               '<td>'+noneClickable+'</td>'+
-              '<td><b style="color:'+rateColor+'">'+rate+'</b></td>';
+              '<td><div class="stats-rate-wrap"><div class="stats-rate-track"><div class="stats-rate-fill" style="width:'+fillW+'%;background:'+fillColor+';"></div></div><span style="font-size:10px;font-weight:600;color:'+fillColor+';min-width:36px;">'+rate+'</span></div></td>';
             tbody.appendChild(tr);
           }
           renderStatsPaging();
@@ -2303,33 +2340,37 @@
           if (!r.alarmHistory || r.alarmHistory.length === 0) {
             rows = '<tr><td colspan="4" style="padding:24px;text-align:center;color:#bbb;">발송 이력이 없습니다.</td></tr>';
           } else {
-            r.alarmHistory.forEach(function(h) {
+            r.alarmHistory.forEach(function(h, idx) {
+              var bg = idx%2===0 ? '#fff' : '#f7fafe';
               rows +=
-                '<tr style="border-bottom:1px solid #f0f0f0;">' +
-                '<td style="padding:10px 16px;text-align:center;">' + h.sender + '</td>' +
-                '<td style="padding:10px 16px;text-align:center;font-weight:700;color:#e74c3c;">' + h.count + '</td>' +
-                '<td style="padding:10px 16px;text-align:center;">' + h.time + '</td>' +
-                '<td style="padding:10px 16px;text-align:center;color:#555;">' + h.phone + '</td>' +
+                '<tr style="background:'+bg+';border-bottom:1px solid #e5ecf2;">' +
+                '<td style="padding:9px 12px;text-align:center;border:1px solid #e5ecf2;">' + h.sender + '</td>' +
+                '<td style="padding:9px 12px;text-align:center;border:1px solid #e5ecf2;font-weight:700;color:#4a90b9;">' + h.count + '</td>' +
+                '<td style="padding:9px 12px;text-align:center;border:1px solid #e5ecf2;color:#555;">' + h.time + '</td>' +
+                '<td style="padding:9px 12px;text-align:center;border:1px solid #e5ecf2;color:#888;font-size:11px;">' + h.phone + '</td>' +
                 '</tr>';
             });
           }
           var modal = document.getElementById('modal-alarm-history');
           modal.innerHTML =
             '<div style="position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:9200;display:flex;align-items:center;justify-content:center;padding:20px;" onclick="if(event.target===this)closeAlarmHistoryModal()">' +
-              '<div style="background:#fff;border-radius:10px;width:560px;max-width:96vw;max-height:80vh;display:flex;flex-direction:column;box-shadow:0 8px 40px rgba(0,0,0,.25);">' +
-                '<div style="padding:22px 28px 16px;border-bottom:1px solid #eee;display:flex;justify-content:space-between;align-items:center;">' +
-                  '<div style="font-size:18px;font-weight:700;color:#222;">알림톡 발송 이력</div>' +
-                  '<button onclick="closeAlarmHistoryModal()" style="background:none;border:none;font-size:22px;cursor:pointer;color:#aaa;line-height:1;padding:0;">✕</button>' +
+              '<div style="background:#fff;border-radius:10px;width:560px;max-width:96vw;max-height:80vh;display:flex;flex-direction:column;box-shadow:0 8px 40px rgba(0,0,0,.25);overflow:hidden;">' +
+                '<div style="padding:18px 24px 14px;border-bottom:1px solid #eef2f7;display:flex;justify-content:space-between;align-items:center;">' +
+                  '<div style="font-size:16px;font-weight:700;color:#2c4f6c;">알림톡 발송 이력</div>' +
+                  '<button onclick="closeAlarmHistoryModal()" style="background:none;border:none;font-size:20px;cursor:pointer;color:#aaa;line-height:1;padding:0;">✕</button>' +
                 '</div>' +
-                '<div style="padding:10px 24px 6px;font-size:13px;color:#888;">' + r.name + ' · ' + r.grade + ' · 총 ' + r.alarm + '회 발송</div>' +
+                '<div style="padding:8px 24px 6px;font-size:12px;color:#888;background:#f7fbfe;border-bottom:1px solid #eef2f7;">' +
+                  '<span style="font-weight:600;color:#2c4f6c;">' + r.name + '</span> · ' + r.grade +
+                  ' · 총 <span style="font-weight:700;color:#4a90b9;">' + r.alarm + '회</span> 발송' +
+                '</div>' +
                 '<div style="overflow-y:auto;flex:1;">' +
-                  '<table style="width:100%;border-collapse:collapse;">' +
+                  '<table style="width:100%;border-collapse:collapse;font-size:12px;">' +
                     '<thead>' +
-                      '<tr style="background:#3a7fa0;">' +
-                        '<th style="padding:10px 16px;color:#fff;font-weight:600;text-align:center;">발송자</th>' +
-                        '<th style="padding:10px 16px;color:#fff;font-weight:600;text-align:center;">회수</th>' +
-                        '<th style="padding:10px 16px;color:#fff;font-weight:600;text-align:center;">최근 발송 시간</th>' +
-                        '<th style="padding:10px 16px;color:#fff;font-weight:600;text-align:center;">발송 번호</th>' +
+                      '<tr style="background:#4a90b9;">' +
+                        '<th style="padding:9px 14px;color:#fff;font-weight:600;text-align:center;border:1px solid #3b7aa8;">발송자</th>' +
+                        '<th style="padding:9px 14px;color:#fff;font-weight:600;text-align:center;border:1px solid #3b7aa8;">회수</th>' +
+                        '<th style="padding:9px 14px;color:#fff;font-weight:600;text-align:center;border:1px solid #3b7aa8;">최근 발송 시간</th>' +
+                        '<th style="padding:9px 14px;color:#fff;font-weight:600;text-align:center;border:1px solid #3b7aa8;">발송 번호</th>' +
                       '</tr>' +
                     '</thead>' +
                     '<tbody>' + rows + '</tbody>' +
@@ -2562,18 +2603,19 @@
         }
         #result-table-wrap { overflow-x: auto; }
         #result-table {
-          width: 100%; border-collapse: collapse; font-size: 11.5px; white-space: nowrap;
+          width: 100%; border-collapse: collapse; font-size: 10.5px; white-space: nowrap;
         }
         #result-table thead tr { background: #4a90b8; color: #fff; position: sticky; top: 0; z-index: 2; }
         #result-table thead th {
-          padding: 8px 10px; text-align: center; font-weight: 600;
-          border: 1px solid #3a7aa8;
+          padding: 5px 4px; text-align: center; font-weight: 600;
+          border: 1px solid #c7d1de; line-height: 1.3;
         }
-        #result-table tbody tr { border-bottom: 1px solid #eef2f7; }
-        #result-table tbody tr:hover { background: #f0f8ff; }
+        #result-table tbody tr { border-bottom: 1px solid #c7d1de; }
+        #result-table tbody tr:nth-child(even) { background: #f7fafe; }
+        #result-table tbody tr:hover { background: #e8f4fb; }
         #result-table tbody td {
-          padding: 7px 10px; text-align: center; border: 1px solid #eef2f7;
-          vertical-align: middle;
+          padding: 6px 4px; text-align: center; border: 1px solid #c7d1de;
+          vertical-align: middle; color: #333340;
         }
         #result-table tbody td.td-left { text-align: left; }
         .final-rank-select {
@@ -2664,6 +2706,17 @@
             <div class="search-row"><span class="search-label">회원명</span><input class="form-input" id="s-memname" style="flex:1;" placeholder="회원명"></div>
             <div class="search-row"><span class="search-label">전국랭킹</span><input class="form-input" id="s-natrank" style="flex:1;" placeholder="예) 1"></div>
           </div>
+          <div class="search-grid-5b" style="margin-top:8px;">
+            <div class="search-row"><span class="search-label">학년</span>
+              <select class="form-select" id="s-grade" style="flex:1;">
+                <option value="">전체</option>
+                <option>초1</option><option>초2</option><option>초3</option><option>초4</option><option>초5</option><option>초6</option>
+                <option>중1</option><option>중2</option><option>중3</option>
+                <option>고1</option><option>고2</option>
+              </select>
+            </div>
+            <div class="search-row"><span class="search-label">조 이름</span><input class="form-input" id="s-teamname" style="flex:1;" placeholder="예) 01조"></div>
+          </div>
           <div style="text-align:center;">
             <button class="btn btn-primary" style="padding:8px 36px;" onclick="doSearch()">검색</button>
             <button class="btn btn-gray" style="padding:8px 20px; margin-left:6px;" onclick="resetSearch()">초기화</button>
@@ -2671,16 +2724,28 @@
         </div>
 
         <!-- 요약 + 액션 -->
-        <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:10px;">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
           <div class="summary-bar">
-            <div class="summary-item"><span>검색 결과</span><b id="result-total-count">0</b></div>
-            <div class="summary-item gm"><span>Grand Master</span><b id="cnt-gm">0</b></div>
-            <div class="summary-item master"><span>Master</span><b id="cnt-master">0</b></div>
-            <div class="summary-item" style="border-color:#e74c3c;"><span style="color:#e74c3c;">최하고정</span><b id="cnt-bottom" style="color:#e74c3c;">0</b></div>
+            <div class="summary-item" style="border-color:#2e7094; color:#2e7094; display:flex; flex-direction:column; justify-content:space-between; min-width:160px; height:38px; padding:4px 12px;">
+              <span style="font-size:11px; font-weight:400;">검색 결과</span>
+              <b id="result-total-count" style="font-size:16px; font-weight:700; align-self:flex-end; margin-top:-2px;">0</b>
+            </div>
+            <div class="summary-item gm" style="border-color:#ffbf00; display:flex; flex-direction:column; justify-content:space-between; min-width:160px; height:38px; padding:4px 12px;">
+              <span style="font-size:11px; color:#996600;">Grand Master</span>
+              <b id="cnt-gm" style="font-size:16px; color:#cc8000; align-self:flex-end; margin-top:-2px;">0</b>
+            </div>
+            <div class="summary-item master" style="border-color:#2e7094; display:flex; flex-direction:column; justify-content:space-between; min-width:160px; height:38px; padding:4px 12px;">
+              <span style="font-size:11px;">Master</span>
+              <b id="cnt-master" style="font-size:16px; align-self:flex-end; margin-top:-2px;">0</b>
+            </div>
+            <div class="summary-item" style="border-color:#e84d3d; color:#e84d3d; display:flex; flex-direction:column; justify-content:space-between; min-width:160px; height:38px; padding:4px 12px;">
+              <span style="font-size:11px;">최하고정</span>
+              <b id="cnt-bottom" style="font-size:16px; align-self:flex-end; margin-top:-2px;">0</b>
+            </div>
           </div>
-          <div style="display:flex; gap:8px; align-items:center; margin-top:4px;">
-            <button class="btn btn-green btn-sm" onclick="saveAllFinalRank()">최종랭킹 일괄저장</button>
-            <button class="btn btn-gray btn-sm" onclick="downloadExcel()">📥 엑셀 다운로드</button>
+          <div style="display:flex; gap:8px; align-items:center;">
+            <button class="btn btn-green btn-sm" style="height:34px; font-size:12px; padding:0 14px;" onclick="saveAllFinalRank()">최종랭킹 일괄저장</button>
+            <button class="btn btn-gray btn-sm" style="height:34px; font-size:12px; padding:0 14px; border:1px solid #ccd1d9; color:#333340;" onclick="downloadExcel()">📥 엑셀 다운로드</button>
           </div>
         </div>
 
@@ -2692,7 +2757,7 @@
                 <tr>
                   <th rowspan="2" style="min-width:36px;">No</th>
                   <!-- 기본정보 -->
-                  <th colspan="7" class="col-group-header">기본 정보</th>
+                  <th colspan="9" class="col-group-header">기본 정보</th>
                   <!-- 점수 -->
                   <th colspan="9" class="col-group-score">점수 정보</th>
                   <!-- 평균/상위 -->
@@ -2706,16 +2771,15 @@
                 </tr>
                 <tr>
                   <th>본부</th><th>지점</th><th>센터</th><th>센터타입</th>
-                  <th>교사명</th><th>회원번호</th><th>회원명</th>
-                  <th>학습점수</th><th>시간점수</th><th>출결점수</th>
-                  <th>학습가산점</th><th>리셋감점</th><th>총점</th>
-                  <th>상위가점</th><th>하위감점</th><th>가감총점</th>
-                  <th>학습평균</th><th>전국학습평균</th><th>학습상위</th>
-                  <th>시간평균</th><th>전국시간평균</th><th>시간상위</th>
-                  <th>출결평균</th><th>전국출결평균</th><th>출결상위</th>
-                  <th>총점평균</th><th>전국총점평균</th><th>총점상위</th>
-                  <th>학습포인트</th><th>출결포인트</th><th>전체포인트</th><th>복권이벤트</th>
-                  <th>랭킹</th><th>본부랭킹</th><th>전국랭킹</th><th>전국회원수</th>
+                  <th>교사명</th><th>회원번호</th><th>회원명</th><th>학년</th><th>조이름</th>
+                  <th style="font-size:10px;">1주<br>학습</th><th style="font-size:10px;">1주<br>시간</th><th style="font-size:10px;">1주<br>출결</th>
+                  <th style="font-size:10px;">2주<br>학습</th><th style="font-size:10px;">2주<br>시간</th><th style="font-size:10px;">2주<br>출결</th>
+                  <th style="font-size:10px;">3주<br>학습</th><th style="font-size:10px;">3주<br>시간</th><th style="font-size:10px;">3주<br>출결</th>
+                  <th style="font-size:10px;">학습<br>평균</th><th style="font-size:10px;">시간<br>평균</th><th style="font-size:10px;">출결<br>평균</th><th style="font-size:10px;">평균<br>합계</th>
+                  <th style="font-size:10px;">상위<br>%</th><th style="font-size:10px;">조내<br>1위</th><th style="font-size:10px;">조내<br>2위</th><th style="font-size:10px;">조내<br>3위</th>
+                  <th style="font-size:10px;">학년<br>1위</th><th style="font-size:10px;">학년<br>2위</th><th style="font-size:10px;">전국<br>상위%</th><th style="font-size:10px;">학년<br>랭킹</th>
+                  <th style="font-size:10px;">출석<br>포인트</th><th style="font-size:10px;">학습<br>포인트</th><th style="font-size:10px;">순위<br>포인트</th><th style="font-size:10px;">총<br>포인트</th>
+                  <th style="font-size:10px;">전국<br>랭킹</th><th style="font-size:10px;">학년<br>랭킹</th><th style="font-size:10px;">조내<br>랭킹</th><th style="font-size:10px;">조<br>랭킹</th>
                 </tr>
               </thead>
               <tbody id="result-tbody"></tbody>
@@ -3003,14 +3067,16 @@
   }
 
         function doSearch(){
-          var bonbu   = document.getElementById('s-bonbu').value.trim();
-          var jijum   = document.getElementById('s-jijum').value.trim();
-          var center  = document.getElementById('s-center').value.trim();
-          var ctype   = document.getElementById('s-ctype').value;
-          var teacher = document.getElementById('s-teacher').value.trim();
-          var memno   = document.getElementById('s-memno').value.trim();
-          var memname = document.getElementById('s-memname').value.trim();
-          var natrank = document.getElementById('s-natrank').value.trim();
+          var bonbu    = document.getElementById('s-bonbu').value.trim();
+          var jijum    = document.getElementById('s-jijum').value.trim();
+          var center   = document.getElementById('s-center').value.trim();
+          var ctype    = document.getElementById('s-ctype').value;
+          var teacher  = document.getElementById('s-teacher').value.trim();
+          var memno    = document.getElementById('s-memno').value.trim();
+          var memname  = document.getElementById('s-memname').value.trim();
+          var natrank  = document.getElementById('s-natrank').value.trim();
+          var grade    = document.getElementById('s-grade') ? document.getElementById('s-grade').value : '';
+          var teamname = document.getElementById('s-teamname') ? document.getElementById('s-teamname').value.trim() : '';
           filteredData = currentLeagueData.filter(function(r){
             if(bonbu   && r['본부'].indexOf(bonbu)<0)   return false;
             if(jijum   && r['지점'].indexOf(jijum)<0)   return false;
@@ -3020,6 +3086,11 @@
             if(memno   && r['회원번호'].indexOf(memno)<0) return false;
             if(memname && r['회원명'].indexOf(memname)<0) return false;
             if(natrank && String(r['전국랭킹']) !== natrank) return false;
+            if(grade) {
+              var _rGrade = (r['리그명'] && r['리그명'] !== '-') ? r['리그명'].replace(/^[A-Z]\./, '') : (r['학년'] || '');
+              if(_rGrade.indexOf(grade) < 0) return false;
+            }
+            if(teamname && (r['조명'] || '').indexOf(teamname) < 0) return false;
             return true;
           });
           currentPage = 1;
@@ -3027,10 +3098,13 @@
         }
 
         function resetSearch(){
-          ['s-bonbu','s-jijum','s-center','s-teacher','s-memno','s-memname','s-natrank'].forEach(function(id){
-            document.getElementById(id).value='';
+          ['s-bonbu','s-jijum','s-center','s-teacher','s-memno','s-memname','s-natrank','s-teamname'].forEach(function(id){
+            var el = document.getElementById(id);
+            if(el) el.value='';
           });
           document.getElementById('s-ctype').value='';
+          var gradeEl = document.getElementById('s-grade');
+          if(gradeEl) gradeEl.value='';
           filteredData = currentLeagueData.slice();
           currentPage=1;
           renderTable();
@@ -3053,6 +3127,20 @@
           document.getElementById('cnt-master').textContent = mCnt;
           document.getElementById('cnt-bottom').textContent = bCnt;
 
+          window.__resultPageRows = filteredData;
+          // Build per-week lookup for score columns
+          var weekLookup = {};
+          var lgData = LEAGUE_DATA[currentLeagueKey];
+          if (lgData && lgData.weeks) {
+            [1,2,3].forEach(function(w) {
+              var wArr = lgData.weeks[String(w)] || [];
+              wArr.forEach(function(wr) {
+                var key = wr['회원번호'];
+                if (!weekLookup[key]) weekLookup[key] = {};
+                weekLookup[key][w] = wr;
+              });
+            });
+          }
           for(var i=start;i<end;i++){
             var r=filteredData[i];
             var rv=rankState[r['회원번호']]||'';
@@ -3060,6 +3148,17 @@
             if(rv==='Grand Master') cls='gm';
             else if(rv==='Master') cls='master';
             else if(rv==='최하고정') cls='bottom';
+            var _gradeDisp = (r['리그명'] && r['리그명'] !== '-') ? r['리그명'].replace(/^[A-Z]\./, '') : (r['학년'] || '-');
+            var _ridx = i;
+            // Per-week scores
+            var wk = weekLookup[r['회원번호']] || {};
+            var w1 = wk[1] || r, w2 = wk[2] || {}, w3 = wk[3] || {};
+            var _학습평균 = r['학습평균'] || '-';
+            var _시간평균 = r['시간평균'] || '-';
+            var _출결평균 = r['출결평균'] || '-';
+            var _avg합계 = (r['총점평균'] || r['가감총점'] || '-');
+            var _상위pct = r['학습상위'] || r['총점상위'] || '-';
+            var _전국상위 = r['총점상위'] || '-';
             var tr=document.createElement('tr');
             tr.innerHTML=
               '<td>'+(i+1)+'</td>'+
@@ -3069,23 +3168,34 @@
               '<td>'+r['센터타입']+'</td>'+
               '<td>'+r['교사명']+'</td>'+
               '<td>'+r['회원번호']+'</td>'+
-              '<td><b>'+r['회원명']+'</b></td>'+
-              '<td>'+r['학습점수']+'</td>'+
-              '<td>'+r['시간점수']+'</td>'+
-              '<td>'+r['출결점수']+'</td>'+
-              '<td>'+r['학습가산점']+'</td>'+
-              '<td>'+r['리셋감점']+'</td>'+
-              '<td><b>'+r['총점']+'</b></td>'+
-              '<td>'+r['상위가점']+'</td>'+
-              '<td>'+r['하위감점']+'</td>'+
-              '<td><b>'+r['가감총점']+'</b></td>'+
-              '<td>'+r['학습평균']+'</td><td>'+r['전국학습평균']+'</td><td>'+r['학습상위']+'</td>'+
-              '<td>'+r['시간평균']+'</td><td>'+r['전국시간평균']+'</td><td>'+r['시간상위']+'</td>'+
-              '<td>'+r['출결평균']+'</td><td>'+r['전국출결평균']+'</td><td>'+r['출결상위']+'</td>'+
-              '<td>'+r['총점평균']+'</td><td>'+r['전국총점평균']+'</td><td>'+r['총점상위']+'</td>'+
-              '<td>'+r['학습포인트']+'</td><td>'+r['출결포인트']+'</td><td><b>'+r['전체포인트']+'</b></td><td>'+r['복권이벤트']+'</td>'+
-              '<td>'+r['랭킹']+'</td><td>'+r['본부랭킹']+'</td>'+
-              '<td><b>'+r['전국랭킹']+'</b></td><td>'+r['전국회원수']+'</td>'+
+              '<td><b style="cursor:pointer;color:#1976d2;text-decoration:underline;" onclick="openResultMemberDetail('+_ridx+');">'+r['회원명']+'</b></td>'+
+              '<td>'+_gradeDisp+'</td>'+
+              '<td>'+(r['조명']||'-')+'</td>'+
+              '<td>'+(w1['학습점수']||'-')+'</td>'+
+              '<td>'+(w1['시간점수']||'-')+'</td>'+
+              '<td>'+(w1['출결점수']||'-')+'</td>'+
+              '<td>'+(w2['학습점수']||'-')+'</td>'+
+              '<td>'+(w2['시간점수']||'-')+'</td>'+
+              '<td>'+(w2['출결점수']||'-')+'</td>'+
+              '<td>'+(w3['학습점수']||'-')+'</td>'+
+              '<td>'+(w3['시간점수']||'-')+'</td>'+
+              '<td>'+(w3['출결점수']||'-')+'</td>'+
+              '<td>'+_학습평균+'</td>'+
+              '<td>'+_시간평균+'</td>'+
+              '<td>'+_출결평균+'</td>'+
+              '<td>'+_avg합계+'</td>'+
+              '<td>'+_상위pct+'</td>'+
+              '<td>-</td><td>-</td><td>-</td>'+
+              '<td>-</td><td>-</td>'+
+              '<td>'+_전국상위+'</td>'+
+              '<td>'+(r['랭킹']||'-')+'</td>'+
+              '<td>'+(r['출결포인트']||'-')+'</td>'+
+              '<td>'+(r['학습포인트']||'-')+'</td>'+
+              '<td>-</td>'+
+              '<td><b>'+(r['전체포인트']||'-')+'</b></td>'+
+              '<td><b>'+(r['전국랭킹']||'-')+'</b></td>'+
+              '<td>'+(r['본부랭킹']||'-')+'</td>'+
+              '<td>-</td><td>-</td>'+
               '<td><select class="final-rank-select '+cls+'" data-memno="'+r['회원번호']+'" onchange="onRankChange(this)">'+
                 '<option value="">—</option>'+
                 '<option value="Grand Master"'+(rv==='Grand Master'?' selected':'')+'>Grand Master</option>'+
@@ -3148,18 +3258,38 @@
         }
 
         function downloadExcel(){
-          var headers = ['본부','지점','센터','센터타입','교사명','회원번호','회원명','생년월일',
-            '리그명','조명','학습점수','시간점수','출결점수','학습가산점','리셋감점','총점',
-            '상위가점','하위감점','상하위진도수','총학습수','가감총점','평균','랭킹','본부랭킹',
-            '학습평균','전국학습평균','학습상위','시간평균','전국시간평균','시간상위',
-            '출결평균','전국출결평균','출결상위','총점평균','전국총점평균','총점상위',
-            '학습포인트','출결포인트','전체포인트','복권이벤트','전국랭킹','전국회원수','최종랭킹'];
+          var lgData = LEAGUE_DATA[currentLeagueKey];
+          var weekLookupDl = {};
+          if (lgData && lgData.weeks) {
+            [1,2,3].forEach(function(w) {
+              (lgData.weeks[String(w)] || []).forEach(function(wr) {
+                if (!weekLookupDl[wr['회원번호']]) weekLookupDl[wr['회원번호']] = {};
+                weekLookupDl[wr['회원번호']][w] = wr;
+              });
+            });
+          }
+          var headers = ['본부','지점','센터','센터타입','교사명','회원번호','회원명','학년','조이름',
+            '1주학습','1주시간','1주출결','2주학습','2주시간','2주출결','3주학습','3주시간','3주출결',
+            '학습평균','시간평균','출결평균','평균합계','상위%','전국상위%','학년랭킹',
+            '출석포인트','학습포인트','순위포인트','총포인트',
+            '전국랭킹','학년랭킹','조내랭킹','조랭킹','최종랭킹'];
           var rows = [headers.join('	')];
           filteredData.forEach(function(r){
-            var row = headers.map(function(h){
-              if(h==='최종랭킹') return rankState[r['회원번호']]||'';
-              return r[h]||'';
-            });
+            var wk = weekLookupDl[r['회원번호']] || {};
+            var w1=wk[1]||r, w2=wk[2]||{}, w3=wk[3]||{};
+            var _grade = (r['리그명'] && r['리그명'] !== '-') ? r['리그명'].replace(/^[A-Z]\./, '') : (r['학년'] || '');
+            var row = [
+              r['본부']||'', r['지점']||'', r['센터']||'', r['센터타입']||'', r['교사명']||'',
+              r['회원번호']||'', r['회원명']||'', _grade, r['조명']||'',
+              w1['학습점수']||'', w1['시간점수']||'', w1['출결점수']||'',
+              w2['학습점수']||'', w2['시간점수']||'', w2['출결점수']||'',
+              w3['학습점수']||'', w3['시간점수']||'', w3['출결점수']||'',
+              r['학습평균']||'', r['시간평균']||'', r['출결평균']||'',
+              r['총점평균']||r['가감총점']||'', r['학습상위']||'', r['총점상위']||'', r['랭킹']||'',
+              r['출결포인트']||'', r['학습포인트']||'', '', r['전체포인트']||'',
+              r['전국랭킹']||'', r['본부랭킹']||'', '', '',
+              rankState[r['회원번호']]||''
+            ];
             rows.push(row.join('	'));
           });
           var blob = new Blob(['﻿'+rows.join('\n')], {type:'text/plain;charset=utf-8'});
@@ -3172,6 +3302,28 @@
         }
 
 
+        function openResultMemberDetail(rowIdx) {
+          var r = (window.__resultPageRows || [])[rowIdx];
+          if (!r) return;
+          var gradeDisp = (r['리그명'] && r['리그명'] !== '-') ? r['리그명'].replace(/^[A-Z]\./, '') : (r['학년'] || '—');
+          var detail = {
+            memberNo: r['회원번호'] || '—',
+            name: r['회원명'] || '—',
+            team: r['조명'] || '—',
+            score: r['가감총점'] || r['총점'] || '—',
+            rank: r['랭킹'] || '—',
+            point: r['전체포인트'] || '—',
+            message: '—',
+            event: '—',
+            grade: gradeDisp,
+            weeks: [
+              { w:1, study:0, time:0, attend:0, bonus:0, reset:0, total:0, points:0 }
+            ],
+            history: []
+          };
+          if (typeof openMemberDetail === 'function') openMemberDetail(detail);
+        }
+
         // ── 전역 함수 노출 (HTML onclick에서 직접 호출) ──
         window.loadResultData    = loadResultData;
         window.loadWeekData      = loadWeekData;
@@ -3181,6 +3333,7 @@
         window.downloadExcel     = downloadExcel;
         window.onRankChange      = onRankChange;
         window._renderTable      = renderTable;
+        window.openResultMemberDetail = openResultMemberDetail;
 
         // 초기 렌더
         renderTable();
@@ -3192,43 +3345,41 @@
         <!-- 탭: 본부별 완주율 -->
         <div id="result-tab-result-bonbu" style="display:none;">
           <style>
-            #bonbu-table { width:100%; border-collapse:collapse; font-size:13px; }
-            #bonbu-table thead tr { background:#4a90b8; color:#fff; }
-            #bonbu-table thead th { padding:10px 16px; text-align:center; font-weight:600; border:1px solid #3a7aa8; }
-            #bonbu-table tbody tr { border-bottom:1px solid #eef2f7; }
-            #bonbu-table tbody tr:hover { background:#f0f8ff; }
-            #bonbu-table tbody td { padding:9px 16px; text-align:center; border:1px solid #eef2f7; }
-            #bonbu-table tbody td.td-left { text-align:left; font-weight:600; color:#2c5f7a; }
-            #bonbu-table tfoot tr { background:#e8f4fb; font-weight:700; }
-            #bonbu-table tfoot td { padding:10px 16px; border:1px solid #dde3ea; text-align:center; color:#2c5f7a; }
-            .rate-bar-wrap { display:flex; align-items:center; gap:8px; }
-            .rate-bar { height:10px; border-radius:5px; background:#4a90b8; }
-            .rate-bar.high { background:#27ae60; }
-            .rate-bar.mid  { background:#e67e22; }
-            .rate-bar.low  { background:#e74c3c; }
+            #bonbu-table { width:100%; border-collapse:collapse; font-size:11px; white-space:nowrap; }
+            #bonbu-table thead tr { background:#4a90b9; color:#fff; }
+            #bonbu-table thead th { padding:10px 16px; text-align:center; font-weight:600; border:1px solid #3b7aa8; }
+            #bonbu-table tbody tr:nth-child(even) { background:#f7fafe; }
+            #bonbu-table tbody tr:hover { background:#e8f4fb; }
+            #bonbu-table tbody td { padding:9px 16px; text-align:center; border:1px solid #e5ecf2; }
+            #bonbu-table tbody td.td-left { text-align:left; font-weight:500; color:#2c5f7a; }
+            #bonbu-table tfoot tr { background:#e8f4fb; }
+            #bonbu-table tfoot td { padding:10px 16px; border:1px solid #ccd9e5; font-weight:700; color:#2c5f7a; text-align:center; }
+            .rate-bar-wrap { display:flex; align-items:center; gap:8px; padding:0 11px; }
+            .rate-bar-track { flex:1; height:12px; border-radius:6px; background:#e5ecf2; position:relative; max-width:627px; }
+            .rate-bar-fill { height:12px; border-radius:6px; background:#4a90b9; }
           </style>
 
           <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
-            <div class="count-badge" style="margin:0;">총 9개 본부</div>
-            <button class="btn btn-gray btn-sm" onclick="downloadBonbuExcel()">📥 엑셀 다운로드</button>
+            <div style="background:#faa523; color:#fff; font-size:12px; font-weight:700; padding:4px 14px; border-radius:14px; display:inline-block;">총 9개 본부</div>
+            <button class="btn btn-gray btn-sm" style="border:1px solid #ccd1d9; color:#333340;" onclick="downloadBonbuExcel()">📥 엑셀 다운로드</button>
           </div>
 
           <div class="card" style="padding:0; overflow:hidden;">
             <table id="bonbu-table">
               <thead>
                 <tr>
-                  <th style="width:40px;">No</th>
-                  <th>본부</th>
-                  <th>총회원수</th>
-                  <th>완주회원수</th>
-                  <th>완주율</th>
-                  <th style="min-width:200px;">완주율 현황</th>
+                  <th style="width:44px;">No</th>
+                  <th style="min-width:280px;">본부</th>
+                  <th style="width:140px;">총회원수</th>
+                  <th style="width:140px;">완주회원수</th>
+                  <th style="width:120px;">완주율</th>
+                  <th>완주율 현황</th>
                 </tr>
               </thead>
               <tbody id="bonbu-tbody"></tbody>
               <tfoot>
                 <tr>
-                  <td colspan="2">전체 합계</td>
+                  <td colspan="2" style="text-align:left; padding-left:9px;">전체 합계</td>
                   <td id="bonbu-total-members">-</td>
                   <td id="bonbu-total-complete">-</td>
                   <td id="bonbu-total-rate">-</td>
@@ -3260,16 +3411,15 @@
                 var rate = (d.complete / d.total * 100).toFixed(2);
                 totalM += d.total; totalC += d.complete;
                 var rateNum = parseFloat(rate);
-                var barCls = rateNum>=93 ? 'high' : rateNum>=90 ? '' : 'mid';
-                var barW = Math.round(rateNum * 1.8); // max ~180px
+                var fillPct = Math.min(100, rateNum);
                 var tr = document.createElement('tr');
                 tr.innerHTML =
                   '<td>'+(i+1)+'</td>'+
                   '<td class="td-left">'+d.bonbu+'</td>'+
                   '<td>'+d.total.toLocaleString()+'</td>'+
                   '<td>'+d.complete.toLocaleString()+'</td>'+
-                  '<td><b style="font-size:14px; color:'+(rateNum>=93?'#27ae60':rateNum>=90?'#4a90b8':'#e67e22')+'">'+rate+'%</b></td>'+
-                  '<td><div class="rate-bar-wrap"><div class="rate-bar '+barCls+'" style="width:'+barW+'px;"></div><span style="font-size:11.5px;color:#888;">'+rate+'%</span></div></td>';
+                  '<td>'+rate+'%</td>'+
+                  '<td><div class="rate-bar-wrap"><div class="rate-bar-track"><div class="rate-bar-fill" style="width:'+fillPct+'%;"></div></div><span style="font-size:11px;font-weight:600;color:#333340;min-width:46px;">'+rate+'%</span></div></td>';
                 tbody.appendChild(tr);
               });
               var totalRate = (totalC/totalM*100).toFixed(2);
@@ -3298,13 +3448,13 @@
         <!-- 탭: 탈락자 관리 -->
         <div id="result-tab-result-dropout" style="display:none;">
           <style>
-            #dropout-table { width:100%; border-collapse:collapse; font-size:12px; white-space:nowrap; }
-            #dropout-table thead tr { background:#4a90b8; color:#fff; }
-            #dropout-table thead th { padding:9px 12px; text-align:center; font-weight:600; border:1px solid #3a7aa8; }
-            #dropout-table tbody tr { border-bottom:1px solid #eef2f7; transition:background .12s; }
-            #dropout-table tbody tr:hover { background:#f7fbfe; }
-            #dropout-table tbody tr.rescued { background:#f0fff4 !important; opacity:.6; }
-            #dropout-table tbody td { padding:8px 12px; text-align:center; border:1px solid #eef2f7; vertical-align:middle; }
+            #dropout-table { width:100%; border-collapse:collapse; font-size:10.5px; white-space:nowrap; }
+            #dropout-table thead tr { background:#4a90b9; color:#fff; }
+            #dropout-table thead th { padding:9px 6px; text-align:center; font-weight:600; border:1px solid #3b7aa8; }
+            #dropout-table tbody tr:nth-child(even) { background:#f7fafe; }
+            #dropout-table tbody tr:hover { background:#e8f4fb; }
+            #dropout-table tbody tr.rescued { background:#f0fff4 !important; opacity:.7; }
+            #dropout-table tbody td { padding:8px 5px; text-align:center; border:1px solid #e5ecf2; vertical-align:middle; color:#333340; }
             #dropout-table tbody td.td-left { text-align:left; }
             .dropout-paging { display:flex; gap:4px; align-items:center; justify-content:center; margin-top:14px; }
             .dropout-paging button {
@@ -3314,40 +3464,39 @@
             .dropout-paging button.active { background:#4a90b8; color:#fff; border-color:#4a90b8; font-weight:700; }
             .dropout-paging button:hover:not(.active) { background:#e8f4fb; }
             .btn-rescue {
-              background:#4a90b8; color:#fff; border:none; border-radius:4px;
-              padding:5px 14px; font-size:12px; font-weight:600; cursor:pointer;
-              transition:background .15s;
+              background:#4a90b9; color:#fff; border:none; border-radius:4px;
+              padding:4px 0; width:70px; font-size:10px; font-weight:600; cursor:pointer;
+              transition:background .15s; display:block; margin:0 auto;
             }
             .btn-rescue:hover { background:#357fa0; }
             .btn-rescue:disabled { background:#b0c4d4; cursor:default; }
           </style>
 
-          <!-- 검색 -->
-          <div class="search-box" style="margin-bottom:14px;">
-            <div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap;">
-              <div style="flex:1; min-width:200px; position:relative;">
-                <span style="position:absolute; left:12px; top:50%; transform:translateY(-50%); color:#aaa; font-size:13px;">🔍</span>
-                <input class="form-input" id="do-keyword" style="width:100%; padding-left:34px; box-sizing:border-box;"
-                  placeholder="본부, 지점, 센터, 교사명, 회원명 등으로 검색"
-                  oninput="doDropoutSearch()"
-                  onkeydown="if(event.key==='Enter') doDropoutSearch()">
-              </div>
-              <button class="btn btn-primary" style="padding:8px 28px; white-space:nowrap;" onclick="doDropoutSearch()">검색</button>
-              <!-- 보기 모드 토글 -->
-              <div style="display:flex; gap:0; border:1px solid #2c5f7a; border-radius:6px; overflow:hidden; margin-left:8px;">
-                <button id="btn-view-dropout"
-                  style="padding:7px 18px; font-size:12.5px; font-weight:600; background:#2c5f7a; color:#fff; border:none; cursor:pointer; white-space:nowrap;"
-                  onclick="setDropoutView('dropout')">🚫 탈락자 목록</button>
-                <button id="btn-view-rescued"
-                  style="padding:7px 18px; font-size:12.5px; font-weight:600; background:#fff; color:#2c5f7a; border:none; cursor:pointer; white-space:nowrap;"
-                  onclick="setDropoutView('rescued')">✅ 구제 완료 목록</button>
-              </div>
+          <!-- 검색 (Figma: 단일 행 컴팩트 바) -->
+          <div style="background:#f7f9fb; border:1px solid #dde5ee; border-radius:8px; height:44px; display:flex; align-items:center; gap:0; padding:0; margin-bottom:12px; overflow:hidden;">
+            <div style="flex:1; position:relative; margin:0 0 0 11px;">
+              <input class="form-input" id="do-keyword"
+                style="width:100%; border:1px solid #ccd1d9; border-radius:4px; height:28px; padding:0 10px 0 30px; font-size:11px; box-sizing:border-box; background:#fff; color:#a6a6b2;"
+                placeholder="본부, 지점, 센터, 교사명, 회원명 등으로 검색"
+                oninput="doDropoutSearch()"
+                onkeydown="if(event.key==='Enter') doDropoutSearch()">
+              <span style="position:absolute; left:9px; top:50%; transform:translateY(-50%); font-size:12px; color:#a6a6b2; pointer-events:none;">🔍</span>
+            </div>
+            <button style="background:#4a90b9; color:#fff; border:none; border-radius:4px; height:28px; padding:0 24px; font-size:12px; font-weight:600; cursor:pointer; margin:0 8px 0 8px; white-space:nowrap;" onclick="doDropoutSearch()">검색</button>
+            <!-- 보기 모드 토글 -->
+            <div style="display:flex; border:1px solid #2c5f7a; border-radius:6px; overflow:hidden; margin-right:11px; height:30px;">
+              <button id="btn-view-dropout"
+                style="padding:0 14px; font-size:11px; font-weight:600; background:#2c5f7a; color:#fff; border:none; cursor:pointer; white-space:nowrap;"
+                onclick="setDropoutView('dropout')">🚫 탈락자 목록</button>
+              <button id="btn-view-rescued"
+                style="padding:0 14px; font-size:11px; font-weight:600; background:#fff; color:#2c5f7a; border:none; cursor:pointer; white-space:nowrap;"
+                onclick="setDropoutView('rescued')">✅ 구제 완료 목록</button>
             </div>
           </div>
 
           <!-- 건수 -->
           <div style="margin-bottom:10px;">
-            <span style="background:#f5a623; color:#fff; font-size:12.5px; font-weight:700; padding:4px 12px; border-radius:12px;">
+            <span id="dropout-count-badge" style="background:#faa523; color:#fff; font-size:12px; font-weight:700; padding:4px 14px; border-radius:13px; display:inline-block;">
               총 <span id="dropout-count">0</span>건
             </span>
           </div>
@@ -3492,9 +3641,8 @@
               var countEl = document.getElementById('dropout-count');
               if(countEl) {
                 countEl.textContent = filteredData.length.toLocaleString();
-                // 배지 색상 변경
-                var badge = countEl.parentElement;
-                if(badge) badge.style.background = (viewMode === 'rescued') ? '#27ae60' : '#f5a623';
+                var badge = document.getElementById('dropout-count-badge');
+                if(badge) badge.style.background = (viewMode === 'rescued') ? '#27ae60' : '#faa523';
               }
 
               var start=(curPage-1)*PAGE_SIZE, end=Math.min(start+PAGE_SIZE, filteredData.length);
@@ -3685,7 +3833,7 @@ function openResultAdd() {
     if (tab === 'gift-choice') { switchGiftChoiceTab('point'); }
   }
 
-  // ── 리그 상세관리 데이터 ─────────────────────────────────────────────
+  // ── 리그 정책관리 데이터 ─────────────────────────────────────────────
   var LEAGUE_META = {
     '2026_winter': {name:'2026 윈터 리그오브매스', season:'윈터리그', status:'진행중', start:'2026-01-12', end:'2026-03-01'},
     '2025_summer': {name:'2025 서머 리그오브매스', season:'서머리그', status:'종료',   start:'2025-07-14', end:'2025-09-06'},
@@ -3738,7 +3886,7 @@ function openResultAdd() {
 
     // 브레드크럼 업데이트
     var bc = document.getElementById('detail-breadcrumb');
-    if (bc) bc.textContent = meta.name + ' 상세 관리';
+    if (bc) bc.textContent = meta.name + ' 정책 관리';
   }
 
   // init sidebar active
