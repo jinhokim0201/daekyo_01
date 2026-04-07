@@ -1833,10 +1833,6 @@
           <div class="stats-sum-card" style="background:#f2f3f4;text-align:center;"><div class="sc-label">완료 인원</div><div class="sc-value" style="color:#c7ccd1;">0명</div><div style="font-size:11px;color:#b2b8bd;margin-top:6px;">신청 기간 전</div></div>
           <div class="stats-sum-card" style="background:#f2f3f4;text-align:center;"><div class="sc-label">탈락 인원</div><div class="sc-value" style="color:#c7ccd1;">0명</div><div style="font-size:11px;color:#b2b8bd;margin-top:6px;">신청 기간 전</div></div>
         </div>
-        <div class="stats-charts-row">
-          <div class="stats-chart-panel" style="min-height:340px;"><div class="stats-chart-title">학년별 신청 인원</div><div class="stats-empty-overlay"><div class="stats-empty-icon">📊</div><div class="stats-empty-title">데이터 없음</div><div class="stats-empty-sub">신청 기간이 시작되면 학년별 통계가 자동으로 표시됩니다.</div></div></div>
-          <div class="stats-chart-panel" style="min-height:340px;"><div class="stats-chart-title">월별 신청 추이</div><div class="stats-empty-overlay"><div class="stats-empty-icon">📈</div><div class="stats-empty-title">데이터 없음</div><div class="stats-empty-sub">신청 시작 후 추이가 표시됩니다.</div></div></div>
-        </div>
         <div class="stats-dday-pill">📅&nbsp; 신청 기간 시작까지&nbsp; D-60</div>
       </div>
 
@@ -1848,18 +1844,6 @@
           <div class="stats-sum-card"><div class="sc-label">윈터리그 신청</div><div class="sc-value" style="color:#4a90b8;">43,428명</div></div>
           <div class="stats-sum-card"><div class="sc-label">완료 인원</div><div class="sc-value" style="color:#27ae60;">41,205명</div></div>
           <div class="stats-sum-card"><div class="sc-label">탈락 인원</div><div class="sc-value" style="color:#e74c3c;">2,223명</div></div>
-        </div>
-
-        <!-- 차트 패널 -->
-        <div class="stats-charts-row">
-          <div class="stats-chart-panel">
-            <div class="stats-chart-title">학년별 신청 인원</div>
-            <div class="stats-bar-area" id="stats-bar-chart"></div>
-          </div>
-          <div class="stats-chart-panel">
-            <div class="stats-chart-title">월별 신청 추이</div>
-            <svg id="stats-line-svg" width="100%" style="overflow:visible;display:block;"></svg>
-          </div>
         </div>
 
         <!-- 검색 -->
@@ -1916,73 +1900,6 @@
         var HAS_DATA = true;
         document.getElementById('stats-empty-state').style.display = HAS_DATA ? 'none' : 'block';
         document.getElementById('stats-data-state').style.display  = HAS_DATA ? 'block' : 'none';
-
-        // ── 학년별 막대 차트 ──
-        var GRADE_DATA = [
-          {grade:'초1', count:2581}, {grade:'초2', count:5358},
-          {grade:'초3', count:7034}, {grade:'초4', count:7396},
-          {grade:'초5', count:6549}, {grade:'초6', count:5434},
-          {grade:'중1', count:4020}, {grade:'중2', count:2888},
-          {grade:'중3', count:1860}
-        ];
-        var barColors = ['#4a90b8','#4f90b3','#5490ae','#5990a9','#5e90a4','#63909f','#69909a','#6e9094','#73908f'];
-        function renderBarChart() {
-          var container = document.getElementById('stats-bar-chart');
-          if (!container) return;
-          var maxV = Math.max.apply(null, GRADE_DATA.map(function(d){ return d.count; }));
-          var maxH = 230;
-          container.innerHTML = '';
-          GRADE_DATA.forEach(function(d, i) {
-            var h = Math.round(d.count / maxV * maxH);
-            var item = document.createElement('div');
-            item.className = 'stats-bar-item';
-            item.innerHTML =
-              '<div class="stats-bar-value">' + d.count.toLocaleString() + '</div>' +
-              '<div class="stats-bar-col" style="height:' + h + 'px;background:' + barColors[i] + ';"></div>' +
-              '<div class="stats-bar-label">' + d.grade + '</div>';
-            container.appendChild(item);
-          });
-        }
-        if (HAS_DATA) renderBarChart();
-
-        // ── 월별 선 차트 ──
-        var MONTHLY_DATA = [
-          {m:'1',  v:500},  {m:'2',  v:1200}, {m:'3',  v:2800},
-          {m:'4',  v:5500}, {m:'5',  v:9800}, {m:'6',  v:15200},
-          {m:'7',  v:22000},{m:'8',  v:29500},{m:'9',  v:35200},
-          {m:'10', v:39500},{m:'11', v:42000},{m:'12', v:43428}
-        ];
-        function renderLineChart() {
-          var svg = document.getElementById('stats-line-svg');
-          if (!svg) return;
-          var W = 540, H = 300, pL=36, pR=16, pT=20, pB=32;
-          var cw = W-pL-pR, ch = H-pT-pB;
-          var maxV = Math.max.apply(null, MONTHLY_DATA.map(function(d){ return d.v; }));
-          var pts = MONTHLY_DATA.map(function(d, i) {
-            return {
-              x: (pL + (i/(MONTHLY_DATA.length-1))*cw).toFixed(1),
-              y: (pT + ch - (d.v/maxV)*ch).toFixed(1),
-              m: d.m
-            };
-          });
-          var hlines = '';
-          for (var g=0; g<=4; g++) {
-            var gy = (pT + (ch/4)*g).toFixed(1);
-            hlines += '<line x1="'+pL+'" y1="'+gy+'" x2="'+(pL+cw)+'" y2="'+gy+'" stroke="#e5ecf2" stroke-width="1"/>';
-          }
-          svg.setAttribute('viewBox','0 0 '+W+' '+H);
-          svg.setAttribute('height', H);
-          svg.innerHTML = hlines +
-            '<polyline points="'+pts.map(function(p){return p.x+','+p.y;}).join(' ')+
-            '" fill="none" stroke="#4a90b9" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>' +
-            pts.map(function(p){
-              return '<circle cx="'+p.x+'" cy="'+p.y+'" r="4" fill="#4a90b9" stroke="#fff" stroke-width="1.5"/>';
-            }).join('') +
-            pts.map(function(p){
-              return '<text x="'+p.x+'" y="'+(H-6)+'" font-size="10" fill="#888" text-anchor="middle">'+p.m+'월</text>';
-            }).join('');
-        }
-        if (HAS_DATA) renderLineChart();
 
         var STATS_DATA = [
           {bonbu:'대교 경기본부',    jijum:'대교 군포산본 Hive',    center:'대교 군포산본 Hive 001팀',    teacher:'송자영', total:18, done:18, wait:0, none:0},
@@ -2110,8 +2027,8 @@
           }).join('');
 
           var colHeaders = type==='total'
-            ? '<th style="padding:9px 14px; background:#3a7fa0; color:#fff;">구분</th><th style="padding:9px 14px; background:#3a7fa0; color:#fff;">신청상태</th><th style="padding:9px 14px; background:#3a7fa0; color:#fff;">회원명</th><th style="padding:9px 14px; background:#3a7fa0; color:#fff;">회원번호</th>'
-            : '<th style="padding:9px 14px; background:#3a7fa0; color:#fff;">구분</th><th style="padding:9px 14px; background:#3a7fa0; color:#fff;">회원명</th><th style="padding:9px 14px; background:#3a7fa0; color:#fff;">회원번호</th>';
+            ? '<th style="padding:9px 14px; background:#4a90b9; color:#fff;">구분</th><th style="padding:9px 14px; background:#4a90b9; color:#fff;">신청상태</th><th style="padding:9px 14px; background:#4a90b9; color:#fff;">회원명</th><th style="padding:9px 14px; background:#4a90b9; color:#fff;">회원번호</th>'
+            : '<th style="padding:9px 14px; background:#4a90b9; color:#fff;">구분</th><th style="padding:9px 14px; background:#4a90b9; color:#fff;">회원명</th><th style="padding:9px 14px; background:#4a90b9; color:#fff;">회원번호</th>';
 
           var modal = document.getElementById('modal-stats-members');
           modal.innerHTML = '' +
@@ -2180,7 +2097,7 @@
               ?'<span class="zero-red">0</span>'
               :'<span class="zero-red">'+r.none+'</span>';
             var rowIdx = filteredStats.indexOf(r);
-            var clickable = 'style="cursor:pointer;text-decoration:underline dotted;color:#2c5f7a;font-weight:700;"';
+            var clickable = 'style="cursor:pointer;text-decoration:underline;text-underline-offset:2px;color:#4a90b9;font-weight:700;"';
             var noneClickable = r.none===0
               ? '<span class="zero-red">0</span>'
               : '<span class="zero-red" ' + clickable + ' onclick="openStatsMembersModal(' + rowIdx + ',\'none\')">'+r.none+'</span>';
