@@ -1387,18 +1387,22 @@
             var rankCell = r.rank > 0 ? r.rank : '–';
             // Store detail for popup access
             window.__memberDetails[i] = r.detail;
-            // 자세히보기 column: blank (detail accessed via 관리 column)
-            var detailCell = '–';
+            // 자세히보기 column: outline button opens member detail popup
+            var detailCell = r.detail
+              ? '<button class="btn btn-secondary btn-sm" style="min-width:68px; font-size:11px;" onclick="openMemberDetail(window.__memberDetails[' + i + '])">자세히보기</button>'
+              : '–';
             // 리그 탈락 여부: green "진행중" badge for active, red "탈락" for eliminated
             var dropoutCell = r.dropout
               ? '<span class="badge badge-red">탈락</span>'
               : '<span class="badge badge-green" style="font-size:11px;">진행중</span>';
-            // 관리 column: blue "진행중" button (visually distinct from green badge in 리그 탈락 여부)
+            // 관리 column: "상세보기"(outline) for unranked, "진행중"(filled) for ranked/assigned
             var manageCell;
             if (r.dropout) {
               manageCell = '–';
+            } else if (r.rank > 0) {
+              manageCell = '<button class="btn btn-primary btn-sm" style="min-width:68px; font-size:11px;" onclick="openMemberDetail(window.__memberDetails[' + i + '])">진행중</button>';
             } else if (r.detail) {
-              manageCell = '<button class="btn btn-primary btn-sm" style="min-width:68px;" onclick="openMemberDetail(window.__memberDetails[' + i + '])">진행중</button>';
+              manageCell = '<button class="btn btn-secondary btn-sm" style="min-width:68px; font-size:11px;" onclick="openMemberDetail(window.__memberDetails[' + i + '])">상세보기</button>';
             } else {
               manageCell = '–';
             }
